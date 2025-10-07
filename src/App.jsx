@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Menu, Container, Loader, Dimmer } from "semantic-ui-react";
+import Home from "./components/Home/Home";
+import NotFound from "./components/NotFound/NotFound";  
+import "./styles.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+
+    return (
+      <Dimmer active inverted>
+        <Loader size="large" content="Cargando Carnes al Barril..." />
+      </Dimmer>
+    );
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Router>
+      <Menu fixed="top" inverted className="navbar">
+        <Container>
+          <Menu.Item as={Link} to="https://i.postimg.cc/hj5pn4Nc/logo.png" header className="brand">
+            Carnes al Barril
+          </Menu.Item>
+          <Menu.Item as={Link} to="/">
+            Inicio
+          </Menu.Item>
+        </Container>
+      </Menu>
 
-export default App
+      <div className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<NotFound />} /> 
+        </Routes>
+      </div>
+    </Router>
+  );
+};
+
+export default App;
