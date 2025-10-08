@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Menu, Container, Loader, Dimmer } from "semantic-ui-react";
+
 import Home from "./components/Home/Home";
 import Products from "./components/Products/Products";
-import NotFound from "./components/NotFound/notFound";  
+import ContactoUbicacion from "./components/Contact/ContactoUbicacion";
+import NotFound from "./components/Notfound/Notfound";
+
+
 import "./styles.css";
 
 const App = () => {
@@ -29,12 +33,10 @@ const App = () => {
           <Menu.Item as={Link} to="/" header className="brand">
             Carnes al Barril
           </Menu.Item>
-          <Menu.Item as={Link} to="/">
-            Inicio
-          </Menu.Item>
-          <Menu.Item as={Link} to="/products">
-            Productos
-          </Menu.Item>
+          <Menu.Item as={Link} to="/">Inicio</Menu.Item>
+          <Menu.Item as={Link} to="/products">Productos</Menu.Item>
+          {/* NUEVO: enlace a tu pestaña */}
+          <Menu.Item as={Link} to="/contacto">Contacto / Ubicación</Menu.Item>
         </Container>
       </Menu>
 
@@ -42,7 +44,9 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
-          <Route path="*" element={<NotFound />} /> 
+          {/* NUEVO: ruta de tu componente */}
+          <Route path="/contacto" element={<ContactoUbicacion />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </Router>
