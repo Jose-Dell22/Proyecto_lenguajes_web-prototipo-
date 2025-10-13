@@ -1,0 +1,28 @@
+.aboutus-container {
+  color: #f1f1f1; /* Texto claro para fondos oscuros */
+  background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente elegante */
+  border-radius: 12px;
+  padding: 3em 2em;
+  margin-top: 6em; /* evita que el contenido quede bajo el navbar */
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.aboutus-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffbb33; /* tono dorado o cálido */
+  text-align: center;
+  margin-bottom: 1em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.aboutus-text {
+  font-size: 1.1rem;
+  text-align: justify;
+  margin-bottom: 1.5em;
+}
