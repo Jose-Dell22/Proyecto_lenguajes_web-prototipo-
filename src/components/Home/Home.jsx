@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { Segment, Container, Header, Grid, Button, Divider } from "semantic-ui-react";
-import { useNavigate } from "react-router-dom"; // 👈 Import necesario
+import { useNavigate } from "react-router-dom";
 import HeroSection from "../common/HeroSection";
 import { styles } from "./Home_styles";
-import "../../animations.css"; 
+import "../../animations.css";
 
 const Home = () => {
-  const navigate = useNavigate(); // 👈 Hook para navegar
+  const navigate = useNavigate();
 
+  // 🔹 Botón de WhatsApp
   const handleWhatsAppClick = () => {
     window.open(
       "https://wa.me/573001112233?text=¡Hola!%20Quiero%20hacer%20un%20pedido%20🍖",
@@ -15,14 +16,12 @@ const Home = () => {
     );
   };
 
- 
+  // 🔹 Botón que lleva al contacto
   const handleRappiClick = () => {
-  
-    navigate("/contacto");
-
-    
+    navigate("/contacto"); // ✅ redirección correcta dentro del router
   };
 
+  // 🔹 Animación de aparición
   useEffect(() => {
     const elements = document.querySelectorAll(".fade-in-section");
     elements.forEach((el, i) => {
@@ -34,6 +33,7 @@ const Home = () => {
 
   return (
     <>
+      {/* Sección principal */}
       <div className="fade-in-section fade-in-delay-1">
         <HeroSection
           title="Carnes al Barril"
@@ -45,6 +45,7 @@ const Home = () => {
         />
       </div>
 
+      {/* Sección de presentación */}
       <Segment
         vertical
         style={styles.darkSection}
@@ -56,7 +57,7 @@ const Home = () => {
           </Header>
           <p style={styles.textLight}>
             En <b>Carnes al Barril</b> combinamos el arte del fuego con la mejor
-            selección de cortes para ofrecerte una experiencia única.  
+            selección de cortes para ofrecerte una experiencia única.
             ¡Ven a probar el sabor que nos hace auténticos!
           </p>
 
@@ -69,23 +70,26 @@ const Home = () => {
             >
               WhatsApp
             </Button>
+
             <Button
               size="large"
               className="pulse-btn"
               style={styles.orangeButton}
-              onClick={handleRappiClick}
+              onClick={handleRappiClick} // ✅ ahora navega correctamente a /contacto
             >
-              ¡Pide por Rappi!
+              ¡Pide de una vez!
             </Button>
           </div>
         </Container>
       </Segment>
 
+      {/* Separador */}
       <Divider
         style={styles.whiteDivider}
         className="fade-in-section fade-in-delay-3"
       />
 
+      {/* Sección de reseñas */}
       <Segment
         vertical
         style={styles.reviewSection}
