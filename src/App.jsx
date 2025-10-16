@@ -7,6 +7,8 @@ import Products from "./components/Products/Products";
 import ContactoUbicacion from "./components/Contact/ContactoUbicacion";
 import NotFound from "./components/Notfound/Notfound";
 import AboutUs from "./components/AboutUs/About"
+import MenuComponent from "./components/MenuComponent/menuComponent";
+
 
 
 import "./styles.css";
@@ -36,6 +38,7 @@ const App = () => {
           </Menu.Item>
           <Menu.Item as={Link} to="/">Inicio</Menu.Item>
           <Menu.Item as={Link} to="/products">Productos</Menu.Item>
+          <Menu.Item as={Link} to="/menu">Menú</Menu.Item>
           {/* NUEVO: enlace a tu pestaña */}
           <Menu.Item as={Link} to="/contacto">Contacto / Ubicación</Menu.Item>
           <Menu.Item as={Link} to="/about">Sobre Nosotros</Menu.Item>
@@ -46,6 +49,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/menu" element={<MenuComponent />} />
           {/* NUEVO: ruta de tu componente */}
           <Route path="/contacto" element={<ContactoUbicacion />} />
           <Route path="*" element={<NotFound />} />
