@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+  Card,
   Image,
   Button,
   Icon,
@@ -8,7 +9,6 @@ import {
   Header,
   Message,
 } from "semantic-ui-react";
-import "./Products.css";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -32,89 +32,112 @@ const Products = () => {
 
   const handleAddToCart = (item) => {
     setCart((prev) => [...prev, item]);
-
-
     setAddedMessage(item.title);
     setTimeout(() => setAddedMessage(null), 1500);
   };
 
   if (loading) {
     return (
-      <div className="products-loader">
-        <Loader active inline="centered" size="large" content="Cargando productos..." />
-      </div>
+      <Loader active inline="centered" size="large" content="Cargando productos..." />
     );
   }
 
   const visibleProducts = products.slice(0, visibleCount);
 
   return (
-    <Container textAlign="left" className="products-container fade-in-section visible">
-      <Header as="h2" className="products-title fade-in-section visible fade-in-delay-1">
-        🥩 Carnes al Barril
+    <Container textAlign="center" style={{ marginTop: "4em", marginBottom: "4em" }}>
+      <Header
+        as="h1"
+        style={{
+          color: "#fff",
+          background: "linear-gradient(90deg, #ff7b00, #ff4500)",
+          padding: "0.7em",
+          borderRadius: "12px",
+          textTransform: "uppercase",
+          letterSpacing: "2px",
+          boxShadow: "0 4px 20px rgba(255, 94, 0, 0.4)",
+        }}
+      >
+        Carnes al Barril
       </Header>
 
-
       {addedMessage && (
-        <div className="added-message fade-in-section visible fade-in-delay-1">
-          <Message positive>
-            <Icon name="check circle" />
-            <strong>{addedMessage}</strong> fue agregado al carrito 🛒
-          </Message>
-        </div>
+        <Message positive style={{ marginTop: "1em" }}>
+          <Icon name="check circle" />
+          <strong>{addedMessage}</strong> fue agregado al carrito 🛒
+        </Message>
       )}
 
-      <div className="products-list">
-        {visibleProducts.map((item, index) => (
-          <div
+      <Card.Group centered itemsPerRow={4} stackable style={{ marginTop: "2em" }}>
+        {visibleProducts.map((item) => (
+          <Card
             key={item.id}
-            className={`product-card card-hover fade-in-section fade-in-delay-${(index % 3) + 1} visible`}
+            style={{
+              borderRadius: "18px",
+              background: "linear-gradient(145deg, #fff5e1, #ffe4b3)",
+              boxShadow: "0 6px 15px rgba(255, 136, 0, 0.2)",
+              transition: "all 0.3s ease",
+            }}
           >
-            <Image src={item.image} alt={item.title} className="product-img" />
-            <div className="product-info">
-              <h3>{item.title}</h3>
-              <p>{item.description.slice(0, 120)}...</p>
-              <strong>${item.price.toLocaleString("es-CO", { minimumFractionDigits: 0 })}</strong>
-            </div>
-            <div className="product-action">
+            <Image
+              src={item.image}
+              alt={item.title}
+              style={{ height: "180px", objectFit: "contain", padding: "1em" }}
+            />
+            <Card.Content textAlign="center">
+              <Card.Header style={{ color: "#ff7b00" }}>{item.title}</Card.Header>
+              <Card.Description style={{ fontSize: "0.9em", color: "#444" }}>
+                {item.description.slice(0, 80)}...
+              </Card.Description>
+            </Card.Content>
+            <Card.Content extra textAlign="center">
+              <strong style={{ color: "#d35400" }}>
+                ${item.price.toLocaleString("es-CO", { minimumFractionDigits: 0 })}
+              </strong>
               <Button
                 color="orange"
                 circular
                 icon
-                className="pulse-btn"
                 onClick={() => handleAddToCart(item)}
+                style={{ marginLeft: "1em" }}
               >
                 <Icon name="plus" />
               </Button>
-            </div>
-          </div>
+            </Card.Content>
+          </Card>
         ))}
-      </div>
+      </Card.Group>
 
       {visibleCount < products.length && (
-        <div className="load-more-container fade-in-section visible fade-in-delay-3">
-          <Button
-            color="orange"
-            size="large"
-            icon
-            labelPosition="right"
-            className="pulse-btn"
-            onClick={() => setVisibleCount((prev) => prev + 4)}
-          >
-            Ver más
-            <Icon name="arrow down" />
-          </Button>
-        </div>
+        <Button
+          color="orange"
+          size="large"
+          icon
+          labelPosition="right"
+          onClick={() => setVisibleCount((prev) => prev + 4)}
+          style={{ marginTop: "2em" }}
+        >
+          Ver más
+          <Icon name="arrow down" />
+        </Button>
       )}
 
-      {/* Carrito flotante (solo para mostrar cuántos hay) */}
       {cart.length > 0 && (
-        <div className="cart-floating fade-in-section visible fade-in-delay-2">
-          <Button color="orange" icon labelPosition="right" className="pulse-btn">
-            <Icon name="shopping cart" />
-            {cart.length} en carrito
-          </Button>
-        </div>
+        <Button
+          color="orange"
+          icon
+          labelPosition="right"
+          style={{
+            position: "fixed",
+            bottom: "25px",
+            right: "25px",
+            borderRadius: "30px",
+            boxShadow: "0 4px 10px rgba(255, 136, 0, 0.5)",
+          }}
+        >
+          <Icon name="shopping cart" />
+          {cart.length} en carrito
+        </Button>
       )}
     </Container>
   );
