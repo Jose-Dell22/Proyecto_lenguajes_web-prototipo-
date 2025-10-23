@@ -1,0 +1,66 @@
+/* Fondo general */
+.menu-container {
+  background-color: #121212;
+  padding: 4em 0;
+  min-height: 100vh;
+  color: #fff;
+}
+
+/* Título principal */
+.menu-title {
+  color: #ff6f3c;
+  font-size: 2.5em !important;
+  margin-bottom: 1.5em !important;
+  text-shadow: 0 2px 10px rgba(255, 111, 60, 0.4);
+}
+
+/* Tarjetas */
+.menu-card {
+  background-color: #1e1e1e !important;
+  border-radius: 15px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(255, 111, 60, 0.3) !important;
+}
+
+/* Imagen del plato */
+.menu-image {
+  height: 250px;
+  object-fit: cover;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+/* Contenido */
+.menu-content {
+  padding: 1.2em !important;
+}
+
+/* Título del plato */
+.menu-header {
+  color: #ffb84d !important;
+  font-size: 1.4em !important;
+  margin-bottom: 0.5em !important;
+}
+
+/* Descripción */
+.menu-description {
+  color: #d3d3d3 !important;
+  font-size: 1em !important;
+  line-height: 1.4;
+}
+
+/* Precio */
+.menu-price {
+  text-align: center;
+  font-size: 1.3em !important;
+  color: #fff !important;
+  background-color: #2a2a2a;
+  padding: 0.8em !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
