@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Card,
   Image,
@@ -9,62 +9,65 @@ import {
   Header,
   Message,
 } from "semantic-ui-react";
+import { useApp } from "../../context/AppContext";
+import { APP_CONFIG, MESSAGES, ICONS } from "../../config/constants";
+import "./Products.css";
 
 const Products = () => {
+  const { addToCart, getCartItemsCount, config } = useApp();
   const [products, setProducts] = useState([]);
-  const [visibleCount, setVisibleCount] = useState(4);
-  const [loading, setLoading] = useState(true);
-  const [cart, setCart] = useState([]);
+  const [visibleCount, setVisibleCount] = useState(config.APP.productsPerPage);
   const [addedMessage, setAddedMessage] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((data) => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(APP_CONFIG.API.products);
+        const data = await response.json();
         setProducts(data);
+      } catch (error) {
+        console.error('Error al cargar productos:', error);
+      } finally {
         setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error al cargar productos:", err);
-        setLoading(false);
-      });
+      }
+    };
+
+    fetchProducts();
   }, []);
 
   const handleAddToCart = (item) => {
-    setCart((prev) => [...prev, item]);
+    addToCart(item);
     setAddedMessage(item.title);
-    setTimeout(() => setAddedMessage(null), 1500);
+    setTimeout(() => setAddedMessage(null), config.APP.messageTimeout);
   };
 
   if (loading) {
     return (
-      <Loader active inline="centered" size="large" content="Cargando productos..." />
+      <Loader active inline="centered" size="large" content={MESSAGES.loadingProducts} />
     );
   }
 
   const visibleProducts = products.slice(0, visibleCount);
 
   return (
-    <Container textAlign="center" style={{ marginTop: "4em", marginBottom: "4em" }}>
-      <Header
-        as="h1"
-        style={{
-          color: "#fff",
-          background: "linear-gradient(90deg, #ff7b00, #ff4500)",
-          padding: "0.7em",
-          borderRadius: "12px",
-          textTransform: "uppercase",
-          letterSpacing: "2px",
-          boxShadow: "0 4px 20px rgba(255, 94, 0, 0.4)",
-        }}
-      >
-        Carnes al Barril
-      </Header>
+    <div className="products-container">
+      {/* Overlay oscuro para mejor contraste */}
+      <div className="products-overlay" />
+      
+      <Container textAlign="center" className="products-content">
+        <Header
+          as="h1"
+          className="products-header"
+        >
+          {config.RESTAURANT.name}
+        </Header>
 
       {addedMessage && (
         <Message positive style={{ marginTop: "1em" }}>
-          <Icon name="check circle" />
-          <strong>{addedMessage}</strong> fue agregado al carrito 🛒
+          <Icon name={ICONS.check} />
+          <strong>{addedMessage}</strong> {MESSAGES.productAdded}
         </Message>
       )}
 
@@ -72,26 +75,21 @@ const Products = () => {
         {visibleProducts.map((item) => (
           <Card
             key={item.id}
-            style={{
-              borderRadius: "18px",
-              background: "linear-gradient(145deg, #fff5e1, #ffe4b3)",
-              boxShadow: "0 6px 15px rgba(255, 136, 0, 0.2)",
-              transition: "all 0.3s ease",
-            }}
+            className="products-card transition-normal"
           >
             <Image
               src={item.image}
               alt={item.title}
-              style={{ height: "180px", objectFit: "contain", padding: "1em" }}
+              className="products-image"
             />
             <Card.Content textAlign="center">
-              <Card.Header style={{ color: "#ff7b00" }}>{item.title}</Card.Header>
-              <Card.Description style={{ fontSize: "0.9em", color: "#444" }}>
+              <Card.Header className="products-title">{item.title}</Card.Header>
+              <Card.Description className="products-description">
                 {item.description.slice(0, 80)}...
               </Card.Description>
             </Card.Content>
             <Card.Content extra textAlign="center">
-              <strong style={{ color: "#d35400" }}>
+              <strong className="products-price">
                 ${item.price.toLocaleString("es-CO", { minimumFractionDigits: 0 })}
               </strong>
               <Button
@@ -99,9 +97,9 @@ const Products = () => {
                 circular
                 icon
                 onClick={() => handleAddToCart(item)}
-                style={{ marginLeft: "1em" }}
+                className="products-button"
               >
-                <Icon name="plus" />
+                <Icon name={ICONS.plus} />
               </Button>
             </Card.Content>
           </Card>
@@ -114,32 +112,16 @@ const Products = () => {
           size="large"
           icon
           labelPosition="right"
-          onClick={() => setVisibleCount((prev) => prev + 4)}
-          style={{ marginTop: "2em" }}
+          onClick={() => setVisibleCount((prev) => prev + config.APP.productsPerPage)}
+          className="products-load-more"
         >
           Ver más
-          <Icon name="arrow down" />
+          <Icon name={ICONS.arrowDown} />
         </Button>
       )}
 
-      {cart.length > 0 && (
-        <Button
-          color="orange"
-          icon
-          labelPosition="right"
-          style={{
-            position: "fixed",
-            bottom: "25px",
-            right: "25px",
-            borderRadius: "30px",
-            boxShadow: "0 4px 10px rgba(255, 136, 0, 0.5)",
-          }}
-        >
-          <Icon name="shopping cart" />
-          {cart.length} en carrito
-        </Button>
-      )}
-    </Container>
+      </Container>
+    </div>
   );
 };
 

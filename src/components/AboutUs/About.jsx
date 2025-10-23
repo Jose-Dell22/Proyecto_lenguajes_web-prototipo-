@@ -1,114 +1,196 @@
 import React from "react";
-import "./Aboutstyle.css"; 
+import { Container, Header, Segment, Grid, Card, Button, Divider, Icon } from "semantic-ui-react";
+import { useApp } from "../../context/AppContext";
 
 export default function AboutUs() {
+  const { config } = useApp();
+
   return (
-    <div className="about-container">
-      <div className="hero">
-        <h1 className="hero-title">Carnes al Barril</h1>
-        <p className="hero-subtitle">Una tradición de sabor, pasión y autenticidad</p>
-    </div>
+    <>
+      {/* Hero Section */}
+      <Segment textAlign="center" inverted color="orange" style={{ padding: "6em 0" }}>
+        <Header as="h1" size="huge" inverted>
+          <Icon name="fire" />
+          {config.RESTAURANT.name}
+        </Header>
+        <Header as="h3" inverted>
+          Una tradición de sabor, pasión y autenticidad
+        </Header>
+      </Segment>
 
-      <div className="content-wrapper">
-        <section className="section dark-section">
-          <h2 className="section-title">Nuestra Historia</h2>
-          <div className="divider"></div>
-          <p className="description">
-            Fundado en 2010, Carnes al Barril nació de la pasión por rescatar la tradición de cocinar carnes 
-            a la manera más auténtica. Lo que comenzó como un pequeño emprendimiento familiar se ha convertido 
-            en un referente gastronómico, reconocido por la calidad excepcional de nuestras carnes.
-          </p>
-          <p className="description">
-            Durante más de una década, hemos mantenido nuestro compromiso con la excelencia, seleccionando personalmente 
-            cada corte y utilizando técnicas tradicionales que realzan el sabor natural de la carne.
-          </p>
-          <div className="divider"></div>
-        </section>
+      <Container>
+        {/* Nuestra Historia */}
+        <Segment vertical>
+          <Header as="h2" textAlign="center" color="orange">
+            <Icon name="history" />
+            Nuestra Historia
+          </Header>
+          <Divider />
+          <Segment raised>
+            <p style={{ fontSize: "1.2em", lineHeight: "1.8em", textAlign: "center", margin: "2em 0" }}>
+              Fundado en 2010, <strong>{config.RESTAURANT.name}</strong> nació de la pasión por rescatar la tradición de cocinar carnes 
+              a la manera más auténtica. Lo que comenzó como un pequeño emprendimiento familiar se ha convertido 
+              en un referente gastronómico, reconocido por la calidad excepcional de nuestras carnes.
+            </p>
+            <p style={{ fontSize: "1.2em", lineHeight: "1.8em", textAlign: "center", margin: "2em 0" }}>
+              Durante más de una década, hemos mantenido nuestro compromiso con la excelencia, seleccionando personalmente 
+              cada corte y utilizando técnicas tradicionales que realzan el sabor natural de la carne.
+            </p>
+          </Segment>
+          <Divider />
+        </Segment>
 
-        <section>
-          <div className="stats-container">
-            <div>
-              <div className="stat-number">15+</div>
-              <div className="stat-label">Años de Tradición</div>
-            </div>
-            <div>
-              <div className="stat-number">1000+</div>
-              <div className="stat-label">Clientes Diarios</div>
-            </div>
-            <div>
-              <div className="stat-number">50+</div>
-              <div className="stat-label">Cortes Premium</div>
-            </div>
-            <div>
-              <div className="stat-number">100%</div>
-              <div className="stat-label">Satisfacción</div>
-            </div>
-          </div>
-        </section>
+        {/* Estadísticas */}
+        <Segment vertical inverted>
+          <Header as="h2" textAlign="center" inverted>
+            <Icon name="chart line" />
+            Nuestros Números
+          </Header>
+          <Grid columns={4} stackable textAlign="center">
+            <Grid.Column>
+              <Card color="orange">
+                <Card.Content>
+                  <Header as="h2" color="orange">15+</Header>
+                  <Card.Description>Años de Tradición</Card.Description>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+            <Grid.Column>
+              <Card color="orange">
+                <Card.Content>
+                  <Header as="h2" color="orange">1000+</Header>
+                  <Card.Description>Clientes Diarios</Card.Description>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+            <Grid.Column>
+              <Card color="orange">
+                <Card.Content>
+                  <Header as="h2" color="orange">50+</Header>
+                  <Card.Description>Cortes Premium</Card.Description>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+            <Grid.Column>
+              <Card color="orange">
+                <Card.Content>
+                  <Header as="h2" color="orange">100%</Header>
+                  <Card.Description>Satisfacción</Card.Description>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+          </Grid>
+        </Segment>
 
-        <section className="section dark-section">
-          <h2 className="section-title">Nuestros Valores</h2>
-          <div className="values-container">
-            <div className="value-card">
-              <h3 className="value-title">Calidad Premium</h3>
-              <p className="value-text">
-                Solo utilizamos las mejores carnes, seleccionadas cuidadosamente y preparadas al barril con técnicas tradicionales.
-              </p>
-            </div>
-            <div className="value-card">
-              <h3 className="value-title">Tradición y Pasión</h3>
-              <p className="value-text">
-                Cada plato refleja nuestro compromiso con la tradición culinaria y la pasión por ofrecer experiencias memorables.
-              </p>
-            </div>
-            <div className="value-card">
-              <h3 className="value-title">Experiencia Auténtica</h3>
-              <p className="value-text">
-                Nos dedicamos a crear un ambiente acogedor donde cada cliente disfruta de la verdadera esencia de las carnes al barril.
-              </p>
-            </div>
-          </div>
-        </section>
+        {/* Nuestros Valores */}
+        <Segment vertical>
+          <Header as="h2" textAlign="center" color="orange">
+            <Icon name="heart" />
+            Nuestros Valores
+          </Header>
+          <Grid columns={3} stackable>
+            <Grid.Column>
+              <Card color="orange" raised>
+                <Card.Content textAlign="center">
+                  <Icon name="star" size="huge" color="orange" />
+                  <Card.Header>Calidad Premium</Card.Header>
+                  <Card.Description>
+                    Solo utilizamos las mejores carnes, seleccionadas cuidadosamente y preparadas al barril con técnicas tradicionales.
+                  </Card.Description>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+            <Grid.Column>
+              <Card color="orange" raised>
+                <Card.Content textAlign="center">
+                  <Icon name="fire" size="huge" color="orange" />
+                  <Card.Header>Tradición y Pasión</Card.Header>
+                  <Card.Description>
+                    Cada plato refleja nuestro compromiso con la tradición culinaria y la pasión por ofrecer experiencias memorables.
+                  </Card.Description>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+            <Grid.Column>
+              <Card color="orange" raised>
+                <Card.Content textAlign="center">
+                  <Icon name="users" size="huge" color="orange" />
+                  <Card.Header>Experiencia Auténtica</Card.Header>
+                  <Card.Description>
+                    Nos dedicamos a crear un ambiente acogedor donde cada cliente disfruta de la verdadera esencia de las carnes al barril.
+                  </Card.Description>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+          </Grid>
+        </Segment>
 
-        <section className="section dark-section">
-          <h2 className="section-title">Nuestro Equipo</h2>
-          <p className="description">
+        {/* Nuestro Equipo */}
+        <Segment vertical inverted>
+          <Header as="h2" textAlign="center" inverted>
+            <Icon name="users" />
+            Nuestro Equipo
+          </Header>
+          <p style={{ fontSize: "1.2em", lineHeight: "1.8em", textAlign: "center", margin: "2em 0" }}>
             Un equipo de expertos apasionados por el arte de cocinar carnes al barril. Cada miembro trae 
             años de experiencia y dedicación a la excelencia culinaria.
           </p>
-          <div className="team-container">
-            <div className="team-member">
-              <div className="avatar">JD</div>
-              <h3 className="member-name">Jose Dell</h3>
-              <p className="member-role">Propietario & Chef</p>
-            </div>
-            <div className="team-member">
-              <div className="avatar">SP</div>
-              <h3 className="member-name">Santiago Perdomo</h3>
-              <p className="member-role">Chef Parrillero</p>
-            </div>
-            <div className="team-member">
-              <div className="avatar">MC</div>
-              <h3 className="member-name">Miguel Cordoba</h3>
-              <p className="member-role">Gerente Restaurante</p>
-            </div>
-            <div className="team-member">
-              <div className="avatar">DR</div>
-              <h3 className="member-name">David Roa</h3>
-              <p className="member-role">Chef Asistente</p>
-            </div>
-          </div>
-        </section>
+          <Grid columns={4} stackable textAlign="center">
+            <Grid.Column>
+              <Card color="orange" raised>
+                <Card.Content textAlign="center">
+                  <Icon name="user" size="huge" color="orange" />
+                  <Card.Header>Jose Dell</Card.Header>
+                  <Card.Meta>Propietario & Chef</Card.Meta>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+            <Grid.Column>
+              <Card color="orange" raised>
+                <Card.Content textAlign="center">
+                  <Icon name="user" size="huge" color="orange" />
+                  <Card.Header>Santiago Perdomo</Card.Header>
+                  <Card.Meta>Chef Parrillero</Card.Meta>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+            <Grid.Column>
+              <Card color="orange" raised>
+                <Card.Content textAlign="center">
+                  <Icon name="user" size="huge" color="orange" />
+                  <Card.Header>Miguel Cordoba</Card.Header>
+                  <Card.Meta>Gerente Restaurante</Card.Meta>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+            <Grid.Column>
+              <Card color="orange" raised>
+                <Card.Content textAlign="center">
+                  <Icon name="user" size="huge" color="orange" />
+                  <Card.Header>David Roa</Card.Header>
+                  <Card.Meta>Chef Asistente</Card.Meta>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+          </Grid>
+        </Segment>
 
-        <section className="section dark-section cta-section">
-          <h2 className="section-title">¿Quieres Visitarnos?</h2>
-          <p className="description">
+        {/* CTA Section */}
+        <Segment vertical color="orange" textAlign="center">
+          <Header as="h2" inverted>
+            <Icon name="calendar" />
+            ¿Quieres Visitarnos?
+          </Header>
+          <p style={{ fontSize: "1.2em", lineHeight: "1.8em", margin: "2em 0" }}>
             Ven y vive la experiencia única de nuestras carnes al barril. Te esperamos con la mejor calidad 
             y la más cálida bienvenida.
           </p>
-          <button className="cta-button">Hacer Reserva</button>
-        </section>
-      </div>
-    </div>
+          <Button size="large" color="black" inverted>
+            <Icon name="calendar" />
+            Hacer Reserva
+          </Button>
+        </Segment>
+      </Container>
+    </>
   );
 }

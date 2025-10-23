@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './ContactoUbicacion.css'
 import {
   Container,
@@ -15,72 +15,101 @@ import {
   Message,
   Embed,
 } from 'semantic-ui-react'
+import { useApp } from '../../context/AppContext'
+import { useForm } from '../../hooks/useForm'
+import { APP_CONFIG, MESSAGES, ICONS } from '../../config/constants'
 
 export default function ContactoUbicacion() {
-  // —— Config editable —— 
-  const INFO = {
-    nombre: 'Carnes al Barril – Neiva',
-    direccion: 'Cra. 1 # 23-45, Neiva, Huila, Colombia',
-    barrio: 'Barrio Centro',
-    telefono: '+57 318 123 4567',
-    email: 'contacto@carnesalbarril.com',
-    instagram: 'https://www.instagram.com/tu_restaurante',
-    facebook: 'https://www.facebook.com/tu_restaurante',
-    whatsapp: 'https://wa.me/573181234567',
-    horarios: [
-      { dia: 'Lun – Jue', horas: '12:00 m – 10:00 p. m.' },
-      { dia: 'Vie – Sáb', horas: '12:00 m – 11:30 p. m.' },
-      { dia: 'Dom', horas: '12:00 m – 9:00 p. m.' },
-    ],
-    mapsEmbedUrl:
-      'https://www.google.com/maps?q=Carnes%20al%20Barril%20Neiva%20Huila&z=15&output=embed',
-    mapsDirections:
-      'https://www.google.com/maps/dir/?api=1&destination=Carnes%20al%20Barril%20Neiva%20Huila',
-  }
+  const { config, contactForm, updateContactForm, resetContactForm, cart, getCartTotal, removeFromCart, decreaseQuantity, increaseQuantity, clearCart } = useApp()
+  const { values, errors, isSubmitting, handleChange, handleSubmit, reset } = useForm()
 
-  // —— Estado del formulario —— 
-  const [formData, setFormData] = useState({ nombre: '', email: '', mensaje: '' })
-  const [errors, setErrors] = useState({})
-  const [enviando, setEnviando] = useState(false)
-  const [okMsg, setOkMsg] = useState('')
-
-  const handleChange = (e, { name, value }) => {
-    setFormData((d) => ({ ...d, [name]: value }))
-    if (errors[name]) setErrors((er) => ({ ...er, [name]: undefined }))
-  }
-
-  const validar = () => {
-    const er = {}
-    if (!formData.nombre.trim()) er.nombre = 'Ingresa tu nombre.'
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(formData.email)) er.email = 'Correo no válido.'
-    if (formData.mensaje.trim().length < 10) er.mensaje = 'Cuéntanos un poco más (≥ 10 caracteres).'
-    setErrors(er)
-    return Object.keys(er).length === 0
-  }
-
-  const handleSubmit = async () => {
-    setOkMsg('')
-    if (!validar()) return
-    setEnviando(true)
+  const onSubmit = async (formData) => {
     try {
-      await new Promise((r) => setTimeout(r, 700)) // demo
-      setOkMsg('¡Gracias! Recibimos tu mensaje y te contactaremos pronto.')
-      setFormData({ nombre: '', email: '', mensaje: '' })
-    } catch {
-      setErrors((er) => ({ ...er, general: 'Ocurrió un error al enviar. Intenta de nuevo.' }))
-    } finally {
-      setEnviando(false)
+      await new Promise((resolve) => setTimeout(resolve, 700)) // Simulación de envío
+      updateContactForm({
+        successMessage: MESSAGES.contactSuccess,
+        data: { nombre: '', email: '', mensaje: '' }
+      })
+      reset()
+    } catch (error) {
+      throw new Error(MESSAGES.contactError)
     }
   }
 
   return (
     <Container className="contact-page">
       <Header as="h1" textAlign="center" className="contact-title">
-        <Icon name="phone" /> Contacto & Ubicación
+        <Icon name={ICONS.phone} /> Contacto & Ubicación
         <Header.Subheader>
           ¿Reservas, dudas o sugerencias? Escríbenos o visítanos.
         </Header.Subheader>
       </Header>
+
+      {/* Mostrar carrito si hay productos */}
+      {cart.length > 0 && (
+        <Segment color="orange" style={{ marginBottom: "2em" }}>
+          <Header as="h3" color="orange">
+            <Icon name="shopping cart" />
+            Productos en tu Carrito
+          </Header>
+          <List divided relaxed>
+            {cart.map((item, index) => (
+              <List.Item key={`${item.id}-${index}`}>
+                <List.Content floated="right">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                    <Button
+                      icon="minus"
+                      size="mini"
+                      color="orange"
+                      onClick={() => decreaseQuantity(index)}
+                      title="Disminuir cantidad"
+                      disabled={item.quantity <= 1}
+                    />
+                    <span style={{ minWidth: '20px', textAlign: 'center', fontWeight: 'bold' }}>
+                      {item.quantity || 1}
+                    </span>
+                    <Button
+                      icon="plus"
+                      size="mini"
+                      color="orange"
+                      onClick={() => increaseQuantity(index)}
+                      title="Aumentar cantidad"
+                    />
+                    <Button
+                      icon="trash"
+                      size="mini"
+                      color="red"
+                      onClick={() => removeFromCart(index)}
+                      title="Eliminar producto"
+                    />
+                  </div>
+                </List.Content>
+                <List.Content>
+                  <List.Header>{item.title}</List.Header>
+                  <List.Description>
+                    Precio: ${item.price.toLocaleString("es-CO")} × {item.quantity || 1} = ${((item.price || 0) * (item.quantity || 1)).toLocaleString("es-CO")}
+                  </List.Description>
+                </List.Content>
+              </List.Item>
+            ))}
+          </List>
+          <Divider />
+          <Header as="h4" textAlign="center">
+            Total del Pedido: ${getCartTotal().toLocaleString("es-CO")}
+          </Header>
+          <div style={{ textAlign: "center", marginTop: "1em" }}>
+            <Button
+              color="red"
+              basic
+              onClick={() => clearCart()}
+              size="small"
+            >
+              <Icon name="trash" />
+              Limpiar Todo el Carrito
+            </Button>
+          </div>
+        </Segment>
+      )}
 
       <Segment placeholder raised className="contact-card">
         <Grid stackable doubling columns={2}>
@@ -88,10 +117,10 @@ export default function ContactoUbicacion() {
           <Grid.Column>
             <Header as="h3" className="section-title">Escríbenos</Header>
 
-            <Form size="large" className="contact-form" onSubmit={handleSubmit} error={!!errors.general} success={!!okMsg}>
+            <Form size="large" className="contact-form" onSubmit={(e) => handleSubmit(e, onSubmit)} error={!!errors.general} success={!!contactForm.successMessage}>
               {errors.general && (
                 <Message error icon>
-                  <Icon name="warning circle" />
+                  <Icon name={ICONS.warning} />
                   <Message.Content>
                     <Message.Header>Ups…</Message.Header>
                     {errors.general}
@@ -99,12 +128,12 @@ export default function ContactoUbicacion() {
                 </Message>
               )}
 
-              {okMsg && (
+              {contactForm.successMessage && (
                 <Message success icon>
-                  <Icon name="check circle" />
+                  <Icon name={ICONS.check} />
                   <Message.Content>
                     <Message.Header>Mensaje enviado</Message.Header>
-                    {okMsg}
+                    {contactForm.successMessage}
                   </Message.Content>
                 </Message>
               )}
@@ -114,7 +143,7 @@ export default function ContactoUbicacion() {
                 label="Nombre"
                 placeholder="Tu nombre"
                 name="nombre"
-                value={formData.nombre}
+                value={values.nombre || ''}
                 onChange={handleChange}
                 error={errors.nombre ? { content: errors.nombre } : null}
                 required
@@ -126,7 +155,7 @@ export default function ContactoUbicacion() {
                 label="Correo"
                 placeholder="tucorreo@ejemplo.com"
                 name="email"
-                value={formData.email}
+                value={values.email || ''}
                 onChange={handleChange}
                 error={errors.email ? { content: errors.email } : null}
                 required
@@ -137,15 +166,15 @@ export default function ContactoUbicacion() {
                 label="Mensaje"
                 placeholder="¿En qué podemos ayudarte?"
                 name="mensaje"
-                value={formData.mensaje}
+                value={values.mensaje || ''}
                 onChange={handleChange}
                 error={errors.mensaje ? { content: errors.mensaje } : null}
                 rows={6}
                 required
               />
 
-              <Button type="submit" primary fluid size="large" loading={enviando} disabled={enviando}>
-                <Icon name="send" /> Enviar
+              <Button type="submit" primary fluid size="large" loading={isSubmitting} disabled={isSubmitting}>
+                <Icon name={ICONS.send} /> Enviar
               </Button>
             </Form>
 
@@ -153,25 +182,25 @@ export default function ContactoUbicacion() {
 
             <Header as="h4" className="section-subtitle">También por aquí</Header>
             <div className="contact-actions">
-              <Button as="a" href={`tel:${INFO.telefono.replace(/\s|-/g, '')}`} basic icon labelPosition="left">
-                <Icon name="phone" /> {INFO.telefono}
+              <Button as="a" href={`tel:${config.RESTAURANT.phone.replace(/\s|-/g, '')}`} basic icon labelPosition="left">
+                <Icon name={ICONS.phone} /> {config.RESTAURANT.phone}
               </Button>
-              <Button as="a" href={`mailto:${INFO.email}`} basic icon labelPosition="left">
-                <Icon name="mail" /> {INFO.email}
+              <Button as="a" href={`mailto:${config.RESTAURANT.email}`} basic icon labelPosition="left">
+                <Icon name={ICONS.email} /> {config.RESTAURANT.email}
               </Button>
             </div>
 
             <Divider hidden />
 
             <div className="social-icons">
-              <a href={INFO.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">
-                <Icon name="instagram" size="big" />
+              <a href={config.RESTAURANT.social.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">
+                <Icon name={ICONS.instagram} size="big" />
               </a>
-              <a href={INFO.facebook} target="_blank" rel="noreferrer" aria-label="Facebook">
-                <Icon name="facebook" size="big" />
+              <a href={config.RESTAURANT.social.facebook} target="_blank" rel="noreferrer" aria-label="Facebook">
+                <Icon name={ICONS.facebook} size="big" />
               </a>
-              <a href={INFO.whatsapp} target="_blank" rel="noreferrer" aria-label="WhatsApp">
-                <Icon name="whatsapp" size="big" />
+              <a href={config.RESTAURANT.social.whatsapp} target="_blank" rel="noreferrer" aria-label="WhatsApp">
+                <Icon name={ICONS.whatsapp} size="big" />
               </a>
             </div>
           </Grid.Column>
@@ -183,26 +212,26 @@ export default function ContactoUbicacion() {
             <Segment tertiary className="info-card">
               <List relaxed>
                 <List.Item>
-                  <Icon name="map marker alternate" size="large" />
+                  <Icon name={ICONS.map} size="large" />
                   <List.Content>
-                    <List.Header>{INFO.nombre}</List.Header>
+                    <List.Header>{config.RESTAURANT.name} – {config.RESTAURANT.location}</List.Header>
                     <List.Description>
-                      {INFO.direccion} – {INFO.barrio}
+                      {config.RESTAURANT.address} – {config.RESTAURANT.neighborhood}
                     </List.Description>
-                    <a href={INFO.mapsDirections} target="_blank" rel="noreferrer">
-                      <Icon name="direction" /> Cómo llegar
+                    <a href={config.RESTAURANT.maps.directionsUrl} target="_blank" rel="noreferrer">
+                      <Icon name={ICONS.direction} /> Cómo llegar
                     </a>
                   </List.Content>
                 </List.Item>
 
                 <List.Item>
-                  <Icon name="clock outline" size="large" />
+                  <Icon name={ICONS.clock} size="large" />
                   <List.Content>
                     <List.Header>Horarios</List.Header>
                     <List.List>
-                      {INFO.horarios.map((h) => (
-                        <List.Item key={h.dia}>
-                          <strong>{h.dia}:</strong> {h.horas}
+                      {config.RESTAURANT.schedules.map((schedule) => (
+                        <List.Item key={schedule.day}>
+                          <strong>{schedule.day}:</strong> {schedule.hours}
                         </List.Item>
                       ))}
                     </List.List>
@@ -210,10 +239,10 @@ export default function ContactoUbicacion() {
                 </List.Item>
 
                 <List.Item>
-                  <Icon name="phone" size="large" />
+                  <Icon name={ICONS.phone} size="large" />
                   <List.Content>
                     <List.Header>Reservas</List.Header>
-                    <a href={`tel:${INFO.telefono.replace(/\s|-/g, '')}`}>{INFO.telefono}</a>
+                    <a href={`tel:${config.RESTAURANT.phone.replace(/\s|-/g, '')}`}>{config.RESTAURANT.phone}</a>
                   </List.Content>
                 </List.Item>
               </List>
@@ -224,7 +253,7 @@ export default function ContactoUbicacion() {
                 active
                 iframe={{
                   title: 'Mapa del restaurante',
-                  src: INFO.mapsEmbedUrl,
+                  src: config.RESTAURANT.maps.embedUrl,
                   allowFullScreen: true,
                   loading: 'lazy',
                   referrerPolicy: 'no-referrer-when-downgrade',
@@ -239,8 +268,8 @@ export default function ContactoUbicacion() {
 
       <Segment basic textAlign="center">
         <Header as="h5" disabled>
-          <Icon name="shield alternate" />
-          Nos importa tu privacidad: la información del formulario solo se usa para responder tu solicitud.
+          <Icon name={ICONS.shield} />
+          {MESSAGES.privacy}
         </Header>
       </Segment>
     </Container>

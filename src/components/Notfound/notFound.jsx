@@ -13,11 +13,11 @@ const NotFound = () => {
         </Header>
 
         <Header.Subheader className="notfound-subheader">
-          Ostras, se nos quemó el asado tío 🔥
+          Ostras, se nos quemó el asado tío
         </Header.Subheader>
 
         <Button as={Link} to="/" color="orange" size="large" className="back-button">
-          <Icon name="arrow left" /> Volver al inicio :/
+          <Icon name="arrow left" /> Volver al inicio
         </Button>
       </Container>
     </div>

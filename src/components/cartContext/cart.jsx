@@ -61,7 +61,7 @@ const Cart = () => {
               icon
               labelPosition="right"
               className="pulse-btn"
-              onClick={() => alert("Pedido enviado 🍖")}
+              onClick={() => alert("Pedido enviado")}
             >
               Confirmar pedido
               <Icon name="check circle" />
