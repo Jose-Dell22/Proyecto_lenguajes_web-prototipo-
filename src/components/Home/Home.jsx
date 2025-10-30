@@ -119,7 +119,7 @@ const Home = () => {
                   minHeight: '300px'
                 }}>
                   <Card.Content style={{ padding: '2em' }}>
-                    <Icon name="utensils" size="massive" color="orange" style={{
+                    <Icon name="utensils" size="massive" color="orange"  className="home-navigation-icon" style={{
                       filter: 'drop-shadow(0 0 10px rgba(255, 123, 0, 0.5))'
                     }} />
                     <Card.Header style={{ 
@@ -175,7 +175,7 @@ const Home = () => {
                   minHeight: '300px'
                 }}>
                   <Card.Content style={{ padding: '2em' }}>
-                    <Icon name="map marker alternate" size="massive" color="orange" style={{
+                    <Icon name="map marker alternate" size="massive" color="orange" className="home-navigation-icon" style={{
                       filter: 'drop-shadow(0 0 10px rgba(255, 123, 0, 0.5))'
                     }} />
                     <Card.Header style={{ 
@@ -231,7 +231,7 @@ const Home = () => {
                   minHeight: '300px'
                 }}>
                   <Card.Content style={{ padding: '2em' }}>
-                    <Icon name="users" size="massive" color="orange" style={{
+                    <Icon name="users" size="massive" color="orange" className="home-navigation-icon" style={{
                       filter: 'drop-shadow(0 0 10px rgba(255, 123, 0, 0.5))'
                     }} />
                     <Card.Header style={{ 
@@ -287,8 +287,9 @@ const Home = () => {
                   minHeight: '300px'
                 }}>
                   <Card.Content style={{ padding: '2em' }}>
-                    <Icon name="star" size="massive" color="orange" style={{
-                      filter: 'drop-shadow(0 0 10px rgba(255, 123, 0, 0.5))'
+                    <Icon name="gem" size="massive" color="orange"   className="home-navigation-icon"  style={{
+                      filter: 'drop-shadow(0 0 15px rgba(255, 123, 0, 0.8))',
+                      transition: 'none'
                     }} />
                     <Card.Header style={{ 
                       fontSize: '1.5em',
