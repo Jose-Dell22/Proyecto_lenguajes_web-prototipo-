@@ -34,7 +34,7 @@ const App = () => {
             {config.RESTAURANT.name}
           </Menu.Item>
           <Menu.Item as={Link} to={config.ROUTES.HOME}>Inicio</Menu.Item>
-          <Menu.Item as={Link} to={config.ROUTES.MENU_COMPONENT}>¡Nuestros mejores!</Menu.Item>
+          <Menu.Item as={Link} to={config.ROUTES.MENU_COMPONENT}>Especialidades del Barril</Menu.Item>
           <Menu.Item as={Link} to={config.ROUTES.PRODUCTS}>Productos</Menu.Item>
           <Menu.Item as={Link} to={config.ROUTES.CONTACT}>Contacto / Ubicación</Menu.Item>
           <Menu.Item as={Link} to={config.ROUTES.ABOUT}>Sobre Nosotros</Menu.Item>
