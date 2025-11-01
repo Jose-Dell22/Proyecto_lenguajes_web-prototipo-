@@ -48,9 +48,39 @@
   margin-top: .75rem !important;
 }
 
-/* Formulario */
+/* ===== Layout: evitar centrados y estirar el formulario ===== */
+.contact-page .contact-card .contact-grid{
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+}
+
+.contact-page .contact-card .contact-grid > .column{
+  display: block !important;
+  text-align: left !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  margin: 0 !important;
+}
+
+/* Formulario: ocupar 100% y sin centrado */
+.contact-page .contact-form{
+  text-align: left !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
 .contact-page .contact-form .field>label{
   color: var(--muted) !important;
+  text-align: left !important;
+}
+.contact-page .contact-form .field,
+.contact-page .contact-form .ui.input,
+.contact-page .contact-form .ui.input>input,
+.contact-page .contact-form textarea{
+  width: 100% !important;
+}
+.contact-page .contact-form textarea{
+  min-height: 160px;
 }
 .contact-page .contact-form .ui.input>input,
 .contact-page .contact-form textarea{
@@ -119,7 +149,7 @@
   color: var(--muted) !important;
 }
 
-/* ===== NUEVO: Horarios en blanco (título + items) ===== */
+/* Horarios en blanco (título + items) */
 .contact-page .info-card .list .item { 
   color: var(--text) !important; 
 }
@@ -127,7 +157,7 @@
   color: var(--text) !important; 
 }
 
-/* ===== NUEVO: Teléfono/Correo (bloque 'También por aquí') en naranja ===== */
+/* Teléfono/Correo en naranja (bloque 'También por aquí') */
 .contact-page .contact-actions .ui.button,
 .contact-page .contact-actions .ui.button .icon{
   color: var(--accent) !important;
