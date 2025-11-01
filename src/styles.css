@@ -150,3 +150,61 @@ body, html {
     transform: translateY(0px);
   }
 }
+
+
+/* ===== NAVBAR ===== */
+.navbar .navbar-inner{
+  display:flex !important;
+  align-items:center;
+}
+
+/* contenedor que reparte el espacio */
+.navbar .nav-spreader{
+  flex: 1 1 auto !important;
+  display: flex !important;
+  justify-content: space-evenly;   /* reparte TODOS por igual */
+  align-items: center;
+  gap: .25rem;                     /* separador mínimo entre items */
+}
+
+.navbar .brand{
+  color:#ff7a1a !important;
+  font-weight:800 !important;
+  margin-right:1rem !important;
+}
+
+.navbar .item{
+  padding: .9rem 1.1rem !important;
+}
+
+.navbar .item.active{
+  font-weight:700 !important;
+}
+
+/* Responsive */
+@media (max-width:1024px){
+  .navbar .nav-spreader{ justify-content: space-around; }
+  .navbar .item{ padding:.8rem 1rem !important; }
+}
+@media (max-width:767px){
+  .navbar .nav-spreader{
+    flex-wrap: wrap;               /* evita que se apiñen */
+    row-gap: .25rem;
+    justify-content: center;
+  }
+  .navbar .item{ padding:.6rem .9rem !important; }
+}
+
+/* Marca SIEMPRE naranja y sin fondo, en todos los estados */
+.ui.inverted.menu.navbar .item.brand,
+.ui.inverted.menu.navbar .item.brand:hover,
+.ui.inverted.menu.navbar .item.brand:focus,
+.ui.inverted.menu.navbar .item.brand:active,
+.ui.inverted.menu.navbar .item.brand.no-active,
+.ui.inverted.menu.navbar .item.brand.no-active:hover,
+.ui.inverted.menu.navbar .item.brand.no-active:focus,
+.ui.inverted.menu.navbar .item.brand.no-active.active {
+  background: transparent !important;
+  color: #ff7a1a !important;
+  font-weight: 800 !important;
+}

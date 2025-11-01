@@ -38,12 +38,13 @@ export default function ContactoUbicacion() {
 
   return (
     <Container className="contact-page">
-      <Header as="h1" textAlign="center" className="contact-title">
-        <Icon name={ICONS.phone} /> Contacto & Ubicación
-        <Header.Subheader>
-          ¿Reservas, dudas o sugerencias? Escríbenos o visítanos.
-        </Header.Subheader>
-      </Header>
+          <Header as="h1" textAlign="center" className="contact-title">
+      <Icon name={ICONS.phone} /> Contacto
+      <Header.Subheader>
+        ¿Reservas, dudas o sugerencias? Escríbenos.
+      </Header.Subheader>
+    </Header>
+
 
       {/* Mostrar carrito si hay productos */}
       {cart.length > 0 && (
