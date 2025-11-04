@@ -1,14 +1,15 @@
 import React from "react";
 import { Container, Header, Segment, Grid, Card, Button, Divider, Icon } from "semantic-ui-react";
 import { useApp } from "../../context/AppContext";
-
+import { Link } from "react-router-dom";
 export default function AboutUs() {
   const { config } = useApp();
 
   return (
     <>
       {/* Hero Section */}
-      <Segment textAlign="center" inverted color="orange" style={{ padding: "6em 0" }}>
+      <Segment textAlign="center" inverted color="orange" style={{ padding: "6em 0",    background: "linear-gradient(135deg, #ff7b00 0%, #ff4500 50%, #d35400 100%)",color: "white",
+    borderRadius: "0 0 1em 1em", }}>
         <Header as="h1" size="huge" inverted>
           <Icon name="fire" />
           {config.RESTAURANT.name}
@@ -33,7 +34,7 @@ export default function AboutUs() {
               en un referente gastronómico, reconocido por la calidad excepcional de nuestras carnes.
             </p>
             <p style={{ fontSize: "1.2em", lineHeight: "1.8em", textAlign: "center", margin: "2em 0" }}>
-              Durante más de una década, hemos mantenido nuestro compromiso con la excelencia, seleccionando personalmente 
+              Durante 10 años, hemos mantenido nuestro compromiso con la excelencia, seleccionando personalmente 
               cada corte y utilizando técnicas tradicionales que realzan el sabor natural de la carne.
             </p>
           </Segment>
@@ -95,7 +96,7 @@ export default function AboutUs() {
                   <Icon name="star" size="huge" color="orange" />
                   <Card.Header>Calidad Premium</Card.Header>
                   <Card.Description>
-                    Solo utilizamos las mejores carnes, seleccionadas cuidadosamente y preparadas al barril con técnicas tradicionales.
+                    Solo utilizamos las mejores carnes, seleccionadas cuidadosamente y preparadas al barril.
                   </Card.Description>
                 </Card.Content>
               </Card>
@@ -185,7 +186,7 @@ export default function AboutUs() {
             Ven y vive la experiencia única de nuestras carnes al barril. Te esperamos con la mejor calidad 
             y la más cálida bienvenida.
           </p>
-          <Button size="large" color="black" inverted>
+     <Button as={Link} to="/contacto" size="large" color="black" inverted>    
             <Icon name="calendar" />
             Hacer Reserva
           </Button>
