@@ -1,0 +1,126 @@
+{
+  "navbar": {
+    "home": "Inicio",
+    "specialties": "Especialidades del Barril",
+    "products": "Productos",
+    "contact": "Contacto",
+    "about": "Sobre Nosotros",
+    "language": "Idioma"
+  },
+  "footer": {
+    "title": "Tradición, fuego y sabor artesanal",
+    "schedule_title": "Horarios de Atención",
+    "contact_title": "Contacto",
+    "social_title": "Síguenos",
+    "rights": "Todos los derechos reservados."
+  },
+  "home": {
+    "subtitle": "El sabor auténtico del fuego",
+    "explore_menu": "Explora nuestro menú",
+    "explore_world": "Explora Nuestro Mundo",
+    "experience_text": "Descubre la magia de nuestras carnes al barril",
+    "menu_title": "Nuestro Menú",
+    "menu_description": "Descubre nuestros mejores platillos preparados al barril con técnicas tradicionales.",
+    "menu_button": "Ver Menú Completo",
+    "location_title": "Ubicación",
+    "location_description": "Ven a visitarnos y vive la experiencia única de nuestras carnes al barril.",
+    "location_button": "Ver Ubicación",
+    "about_title": "Sobre Nosotros",
+    "about_description": "Conoce la historia detrás de nuestro sabor inigualable.",
+    "about_button": "Leer Más",
+     "specials_title": "Especiales",
+    "specials_description": "Nuestros platillos más destacados y especialidades que tienes que probar.",
+    "specials_button": "Ver Especiales"
+  },
+  "menu": {
+    "title": "Especiales del Barril",
+    "added_message": "ha sido agregado al carrito.",
+    "items": {
+      "beef_barrel": {
+        "title": "Carne al Barril",
+        "description": "Corte jugoso cocinado lentamente al barril, con sabor ahumado irresistible."
+      },
+      "ribs_bbq": {
+        "title": "Costillas BBQ",
+        "description": "Costillas tiernas bañadas en salsa BBQ artesanal, servidas con limón y hierbas."
+      },
+      "sausage": {
+        "title": "Chorizo Parrillero",
+        "description": "Chorizos artesanales asados al carbón, servidos con arepa y chimichurri."
+      },
+      "picanha": {
+        "title": "Punta de Anca",
+        "description": "Corte premium con un toque de sal gruesa y mantequilla de ajo, suave y jugoso."
+      },
+      "chicken_breast": {
+        "title": "Pechuga a la Parrilla",
+        "description": "Pechuga de pollo marinada con hierbas finas, cocinada a la parrilla a la perfección."
+      },
+      "grill_trilogy": {
+        "title": "Trilogía Parrillera",
+        "description": "Selección de tres cortes —chorizo, punta de anca y lomo— cocinados al barril, servidos con papas criollas y chimichurri artesanal."
+      }
+    }
+  },
+    "products": {
+    "load_more": "Ver más"
+  },
+   "contact": {
+    "title": "Contacto",
+    "subtitle": "¿Reservas, dudas o sugerencias? Escríbenos.",
+    "cart_title": "Productos en tu Carrito",
+    "decrease": "Disminuir cantidad",
+    "increase": "Aumentar cantidad",
+    "remove": "Eliminar producto",
+    "price": "Precio",
+    "total": "Total del Pedido",
+    "clear_cart": "Limpiar Todo el Carrito",
+    "write_us": "Escríbenos",
+    "error_header": "Ups…",
+    "sent": "Mensaje enviado",
+    "name": "Nombre",
+    "name_placeholder": "Tu nombre",
+    "email": "Correo",
+    "email_placeholder": "tucorreo@ejemplo.com",
+    "message": "Mensaje",
+    "message_placeholder": "¿En qué podemos ayudarte?",
+    "send": "Enviar",
+    "also_here": "También por aquí",
+    "visit_us": "Visítanos",
+    "directions": "Cómo llegar",
+    "schedule": "Horarios",
+    "reservations": "Reservas",
+    "map_title": "Mapa del restaurante",
+    "privacy": "Tu privacidad es importante para nosotros",
+    "success": "Tu mensaje ha sido enviado exitosamente.",
+    "error": "Error al enviar el mensaje."
+  },
+   "about": {
+    "hero_subtitle": "Una tradición de sabor, pasión y autenticidad",
+    "history_title": "Nuestra Historia",
+    "history_paragraph1": "Fundado en 2010, {{name}} nació de la pasión por rescatar la tradición de cocinar carnes a la manera más auténtica. Lo que comenzó como un pequeño emprendimiento familiar se ha convertido en un referente gastronómico.",
+    "history_paragraph2": "Durante 10 años, hemos mantenido nuestro compromiso con la excelencia, seleccionando personalmente cada corte y utilizando técnicas tradicionales.",
+    "stats_title": "Nuestros Números",
+    "stats_years": "Años de Tradición",
+    "stats_clients": "Clientes Diarios",
+    "stats_cuts": "Cortes Premium",
+    "stats_satisfaction": "Satisfacción",
+    "values_title": "Nuestros Valores",
+    "value_quality_title": "Calidad Premium",
+    "value_quality_desc": "Solo utilizamos las mejores carnes, seleccionadas cuidadosamente y preparadas al barril.",
+    "value_tradition_title": "Tradición y Pasión",
+    "value_tradition_desc": "Cada plato refleja nuestro compromiso con la tradición culinaria y la pasión por ofrecer experiencias memorables.",
+    "value_experience_title": "Experiencia Auténtica",
+    "value_experience_desc": "Nos dedicamos a crear un ambiente acogedor donde cada cliente disfruta de la verdadera esencia de las carnes al barril.",
+    "team_title": "Nuestro Equipo",
+    "team_description": "Un equipo de expertos apasionados por el arte de cocinar carnes al barril. Cada miembro aporta experiencia y dedicación.",
+    "team_owner": "Propietario & Chef",
+    "team_grill_chef": "Chef Parrillero",
+    "team_manager": "Gerente Restaurante",
+    "team_assistant_chef": "Chef Asistente",
+    "cta_title": "¿Quieres Visitarnos?",
+    "cta_description": "Ven y vive la experiencia única de nuestras carnes al barril. Te esperamos con la mejor calidad y la más cálida bienvenida.",
+    "cta_button": "Hacer Reserva"
+  }
+
+}

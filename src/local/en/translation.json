@@ -1,0 +1,128 @@
+{
+  "navbar": {
+    "home": "Home",
+    "specialties": "Barrel Specialties",
+    "products": "Products",
+    "contact": "Contact",
+    "about": "About Us",
+    "language": "Language"
+  },
+  "footer": {
+   "title": "Tradition, fire, and artisanal flavor",
+    "schedule_title": "Opening Hours",
+    "contact_title": "Contact",
+    "social_title": "Follow Us",
+    "rights": "All rights reserved."
+  },
+  "home": {
+    "subtitle": "The authentic flavor of fire",
+    "explore_menu": "Explore our menu",
+    "explore_world": "Explore Our World",
+    "experience_text": "Discover the magic of our barrel-grilled meats",
+    "menu_title": "Our Menu",
+    "menu_description": "Discover our best dishes prepared using traditional barrel techniques.",
+    "menu_button": "See Full Menu",
+    "location_title": "Location",
+    "location_description": "Come visit us and enjoy the unique experience of our barrel-cooked meats.",
+    "location_button": "View Location",
+    "about_title": "About Us",
+    "about_description": "Learn the story behind our unforgettable flavor.",
+    "about_button": "Read More",
+    "specials_title": "Specials",
+    "specials_description": "Our most outstanding dishes and specialties you must try.",
+    "specials_button": "View Specials"
+  },
+  "menu": {
+    "title": "Barrel Specials",
+    "added_message": "has been added to the cart.",
+    "items": {
+      "beef_barrel": {
+        "title": "Barrel-Cooked Beef",
+        "description": "Juicy cut slowly cooked in a barrel with irresistible smoky flavor."
+      },
+      "ribs_bbq": {
+        "title": "BBQ Ribs",
+        "description": "Tender ribs coated in handcrafted BBQ sauce, served with lime and herbs."
+      },
+      "sausage": {
+        "title": "Grilled Sausage",
+        "description": "Handmade sausages grilled over charcoal, served with arepa and chimichurri."
+      },
+      "picanha": {
+        "title": "Picanha Steak",
+        "description": "Premium cut seasoned with coarse salt and garlic butter, tender and juicy."
+      },
+      "chicken_breast": {
+        "title": "Grilled Chicken Breast",
+        "description": "Chicken breast marinated with fine herbs and grilled to perfection."
+      },
+      "grill_trilogy": {
+        "title": "Grill Trilogy",
+        "description": "Selection of three cuts —sausage, picanha, and loin— cooked in the barrel, served with criolla potatoes and artisan chimichurri."
+      }
+    }
+  },
+  
+  "products": {
+    "load_more": "Load more"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Reservations, questions, or suggestions? Write to us.",
+    "cart_title": "Items in Your Cart",
+    "decrease": "Decrease quantity",
+    "increase": "Increase quantity",
+    "remove": "Remove product",
+    "price": "Price",
+    "total": "Order Total",
+    "clear_cart": "Clear Cart",
+    "write_us": "Write to Us",
+    "error_header": "Oops…",
+    "sent": "Message Sent",
+    "name": "Name",
+    "name_placeholder": "Your name",
+    "email": "Email",
+    "email_placeholder": "your@email.com",
+    "message": "Message",
+    "message_placeholder": "How can we help you?",
+    "send": "Send",
+    "also_here": "Also reach us here",
+    "visit_us": "Visit Us",
+    "directions": "Get Directions",
+    "schedule": "Opening Hours",
+    "reservations": "Reservations",
+    "map_title": "Restaurant Map",
+    "privacy": "Your privacy is important to us",
+    "success": "Your message has been sent successfully.",
+    "error": "Error sending message."
+  },
+  "about": {
+    "hero_subtitle": "A tradition of flavor, passion, and authenticity",
+    "history_title": "Our Story",
+    "history_paragraph1": "Founded in 2010, {{name}} was born from a passion to preserve the art of cooking meats in the most authentic way. What began as a small family venture has become a culinary reference.",
+    "history_paragraph2": "For over 10 years, we have maintained our commitment to excellence, personally selecting each cut and using traditional techniques.",
+    "stats_title": "Our Numbers",
+    "stats_years": "Years of Tradition",
+    "stats_clients": "Daily Customers",
+    "stats_cuts": "Premium Cuts",
+    "stats_satisfaction": "Satisfaction",
+    "values_title": "Our Values",
+    "value_quality_title": "Premium Quality",
+    "value_quality_desc": "We use only the best meats, carefully selected and barrel-grilled to perfection.",
+    "value_tradition_title": "Tradition & Passion",
+    "value_tradition_desc": "Every dish reflects our commitment to culinary heritage and passion for memorable experiences.",
+    "value_experience_title": "Authentic Experience",
+    "value_experience_desc": "We strive to create a warm atmosphere where every guest enjoys the true essence of barrel-grilled meats.",
+    "team_title": "Our Team",
+    "team_description": "A team of experts passionate about the art of barrel-grilled cooking, each bringing years of dedication.",
+    "team_owner": "Owner & Chef",
+    "team_grill_chef": "Grill Chef",
+    "team_manager": "Restaurant Manager",
+    "team_assistant_chef": "Assistant Chef",
+    "cta_title": "Want to Visit Us?",
+    "cta_description": "Come and enjoy the unique experience of our barrel-grilled meats. We await you with top quality and warm hospitality.",
+    "cta_button": "Make a Reservation"
+  }
+
+
+}

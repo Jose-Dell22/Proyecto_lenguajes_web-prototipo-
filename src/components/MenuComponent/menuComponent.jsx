@@ -2,58 +2,54 @@ import React, { useState } from "react";
 import { Card, Image, Button, Icon, Container, Message } from "semantic-ui-react";
 import { useApp } from "../../context/AppContext";
 import { ICONS, MESSAGES } from "../../config/constants";
+import { useTranslation } from "react-i18next"; // 🌍 Soporte de idiomas
 import "./menuComponent.css";
 
 const MenuComponent = () => {
   const { addToCart, config } = useApp();
   const [addedMessage, setAddedMessage] = useState(null);
+  const { t } = useTranslation();
 
   const menuData = [
     {
       id: 1,
-      title: "Carne al Barril",
-      description:
-        "Corte jugoso cocinado lentamente al barril, con sabor ahumado irresistible.",
+      title: t("menu.items.beef_barrel.title"),
+      description: t("menu.items.beef_barrel.description"),
       price: 35000,
       image: "/img/carnesAlBarril.jpg",
     },
     {
       id: 2,
-      title: "Costillas BBQ",
-      description:
-        "Costillas tiernas bañadas en salsa BBQ artesanal, servidas con limón y hierbas.",
+      title: t("menu.items.ribs_bbq.title"),
+      description: t("menu.items.ribs_bbq.description"),
       price: 38000,
       image: "/img/costillasBBQ.jpg",
     },
     {
       id: 3,
-      title: "Chorizo Parrillero",
-      description:
-        "Chorizos artesanales asados al carbón, servidos con arepa y chimichurri.",
+      title: t("menu.items.sausage.title"),
+      description: t("menu.items.sausage.description"),
       price: 25000,
       image: "/img/chorizoParrillero.jpeg",
     },
     {
       id: 4,
-      title: "Punta de Anca",
-      description:
-        "Corte premium con un toque de sal gruesa y mantequilla de ajo, suave y jugoso.",
+      title: t("menu.items.picanha.title"),
+      description: t("menu.items.picanha.description"),
       price: 42000,
       image: "/img/puntadeAnca.jpg",
     },
     {
       id: 5,
-      title: "Pechuga a la Parrilla",
-      description:
-        "Pechuga de pollo marinada con hierbas finas, cocinada a la parrilla a la perfección.",
+      title: t("menu.items.chicken_breast.title"),
+      description: t("menu.items.chicken_breast.description"),
       price: 30000,
       image: "/img/PechugaParrilla.jpg",
     },
     {
       id: 6,
-      title: "Trilogía Parrillera",
-      description:
-        "Selección de tres cortes —chorizo, punta de anca y lomo— cocinados al barril, servidos con papas criollas y chimichurri artesanal.",
+      title: t("menu.items.grill_trilogy.title"),
+      description: t("menu.items.grill_trilogy.description"),
       price: 52000,
       image: "/img/TrilogíaParrillera.jpg",
     },
@@ -67,15 +63,15 @@ const MenuComponent = () => {
 
   return (
     <div className="menu-estatico-container">
-      {/* === Encabezado con estilo tipo Products === */}
+      {/* === Encabezado === */}
       <Container textAlign="center" className="menu-estatico-content">
-        <h1 className="menu-estatico-header">Especiales del Barril</h1>
+        <h1 className="menu-estatico-header">{t("menu.title")}</h1>
 
         {/* Mensaje de confirmación */}
         {addedMessage && (
           <Message positive style={{ marginTop: "1em" }}>
             <Icon name={ICONS.check} />
-            <strong>{addedMessage}</strong> {MESSAGES.productAdded}
+            <strong>{addedMessage}</strong> {t("menu.added_message")}
           </Message>
         )}
 
@@ -121,5 +117,3 @@ const MenuComponent = () => {
 };
 
 export default MenuComponent;
-
-

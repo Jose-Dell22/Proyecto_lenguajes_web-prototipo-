@@ -18,6 +18,7 @@ import {
 import { useApp } from '../../context/AppContext'
 import { useForm } from '../../hooks/useForm'
 import { APP_CONFIG, MESSAGES, ICONS } from '../../config/constants'
+import { useTranslation } from "react-i18next"  // 🌍 i18n agregado
 
 export default function ContactoUbicacion() {
   const {
@@ -34,35 +35,35 @@ export default function ContactoUbicacion() {
   } = useApp()
 
   const { values, errors, isSubmitting, handleChange, handleSubmit, reset } = useForm()
+  const { t } = useTranslation() // 🌍 Hook de traducción
 
   const onSubmit = async (formData) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 700)) // Simulación de envío
+      await new Promise((resolve) => setTimeout(resolve, 700))
       updateContactForm({
-        successMessage: MESSAGES.contactSuccess,
+        successMessage: t("contact.success"),
         data: { nombre: '', email: '', mensaje: '' },
       })
       reset()
     } catch (error) {
-      throw new Error(MESSAGES.contactError)
+      throw new Error(t("contact.error"))
     }
   }
 
   return (
     <Container className="contact-page">
       <Header as="h1" textAlign="center" className="contact-title">
-        <Icon name={ICONS.phone} /> Contacto
+        <Icon name={ICONS.phone} /> {t("contact.title")}
         <Header.Subheader>
-          ¿Reservas, dudas o sugerencias? Escríbenos.
+          {t("contact.subtitle")}
         </Header.Subheader>
       </Header>
 
-      {/* Mostrar carrito si hay productos */}
       {cart.length > 0 && (
         <Segment color="orange" style={{ marginBottom: '2em' }}>
           <Header as="h3" color="orange">
             <Icon name="shopping cart" />
-            Productos en tu Carrito
+            {t("contact.cart_title")}
           </Header>
           <List divided relaxed>
             {cart.map((item, index) => (
@@ -74,7 +75,7 @@ export default function ContactoUbicacion() {
                       size="mini"
                       color="orange"
                       onClick={() => decreaseQuantity(index)}
-                      title="Disminuir cantidad"
+                      title={t("contact.decrease")}
                       disabled={item.quantity <= 1}
                     />
                     <span style={{ minWidth: '20px', textAlign: 'center', fontWeight: 'bold' }}>
@@ -85,21 +86,21 @@ export default function ContactoUbicacion() {
                       size="mini"
                       color="orange"
                       onClick={() => increaseQuantity(index)}
-                      title="Aumentar cantidad"
+                      title={t("contact.increase")}
                     />
                     <Button
                       icon="trash"
                       size="mini"
                       color="red"
                       onClick={() => removeFromCart(index)}
-                      title="Eliminar producto"
+                      title={t("contact.remove")}
                     />
                   </div>
                 </List.Content>
                 <List.Content>
                   <List.Header>{item.title}</List.Header>
                   <List.Description>
-                    Precio: ${item.price.toLocaleString('es-CO')} × {item.quantity || 1} = $
+                    {t("contact.price")}: ${item.price.toLocaleString('es-CO')} × {item.quantity || 1} = $
                     {((item.price || 0) * (item.quantity || 1)).toLocaleString('es-CO')}
                   </List.Description>
                 </List.Content>
@@ -108,36 +109,21 @@ export default function ContactoUbicacion() {
           </List>
           <Divider />
           <Header as="h4" textAlign="center">
-            Total del Pedido: ${getCartTotal().toLocaleString('es-CO')}
+            {t("contact.total")}: ${getCartTotal().toLocaleString('es-CO')}
           </Header>
           <div style={{ textAlign: 'center', marginTop: '1em' }}>
             <Button color="red" basic onClick={() => clearCart()} size="small">
               <Icon name="trash" />
-              Limpiar Todo el Carrito
+              {t("contact.clear_cart")}
             </Button>
           </div>
         </Segment>
       )}
 
-      {/* Tarjeta principal (SIN 'placeholder' para evitar centrado) */}
       <Segment raised className="contact-card">
-        {/* Grid alineado arriba y con clase para CSS */}
-        <Grid
-          stackable
-          columns={2}
-          className="contact-grid"
-          style={{ alignItems: 'flex-start' }}
-        >
-          {/* Columna izquierda: Formulario */}
-          <Grid.Column
-            computer={8}
-            tablet={16}
-            mobile={16}
-            className="form-col"
-            textAlign="left"
-            verticalAlign="top"
-          >
-            <Header as="h3" className="section-title">Escríbenos</Header>
+        <Grid stackable columns={2} className="contact-grid" style={{ alignItems: 'flex-start' }}>
+          <Grid.Column computer={8} tablet={16} mobile={16} className="form-col" textAlign="left" verticalAlign="top">
+            <Header as="h3" className="section-title">{t("contact.write_us")}</Header>
 
             <Form
               size="large"
@@ -151,7 +137,7 @@ export default function ContactoUbicacion() {
                 <Message error icon>
                   <Icon name={ICONS.warning} />
                   <Message.Content>
-                    <Message.Header>Ups…</Message.Header>
+                    <Message.Header>{t("contact.error_header")}</Message.Header>
                     {errors.general}
                   </Message.Content>
                 </Message>
@@ -161,7 +147,7 @@ export default function ContactoUbicacion() {
                 <Message success icon>
                   <Icon name={ICONS.check} />
                   <Message.Content>
-                    <Message.Header>Mensaje enviado</Message.Header>
+                    <Message.Header>{t("contact.sent")}</Message.Header>
                     {contactForm.successMessage}
                   </Message.Content>
                 </Message>
@@ -169,8 +155,8 @@ export default function ContactoUbicacion() {
 
               <Form.Field
                 control={Input}
-                label="Nombre"
-                placeholder="Tu nombre"
+                label={t("contact.name")}
+                placeholder={t("contact.name_placeholder")}
                 name="nombre"
                 value={values.nombre || ''}
                 onChange={handleChange}
@@ -181,8 +167,8 @@ export default function ContactoUbicacion() {
               <Form.Field
                 control={Input}
                 type="email"
-                label="Correo"
-                placeholder="tucorreo@ejemplo.com"
+                label={t("contact.email")}
+                placeholder={t("contact.email_placeholder")}
                 name="email"
                 value={values.email || ''}
                 onChange={handleChange}
@@ -192,8 +178,8 @@ export default function ContactoUbicacion() {
 
               <Form.Field
                 control={TextArea}
-                label="Mensaje"
-                placeholder="¿En qué podemos ayudarte?"
+                label={t("contact.message")}
+                placeholder={t("contact.message_placeholder")}
                 name="mensaje"
                 value={values.mensaje || ''}
                 onChange={handleChange}
@@ -210,13 +196,13 @@ export default function ContactoUbicacion() {
                 loading={isSubmitting}
                 disabled={isSubmitting}
               >
-                <Icon name={ICONS.send} /> Enviar
+                <Icon name={ICONS.send} /> {t("contact.send")}
               </Button>
             </Form>
 
             <Divider hidden />
 
-            <Header as="h4" className="section-subtitle">También por aquí</Header>
+            <Header as="h4" className="section-subtitle">{t("contact.also_here")}</Header>
             <div className="contact-actions">
               <Button
                 as="a"
@@ -241,43 +227,20 @@ export default function ContactoUbicacion() {
             <Divider hidden />
 
             <div className="social-icons">
-              <a
-                href={config.RESTAURANT.social.instagram}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Instagram"
-              >
+              <a href={config.RESTAURANT.social.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">
                 <Icon name={ICONS.instagram} size="big" />
               </a>
-              <a
-                href={config.RESTAURANT.social.facebook}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Facebook"
-              >
+              <a href={config.RESTAURANT.social.facebook} target="_blank" rel="noreferrer" aria-label="Facebook">
                 <Icon name={ICONS.facebook} size="big" />
               </a>
-              <a
-                href={config.RESTAURANT.social.whatsapp}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="WhatsApp"
-              >
+              <a href={config.RESTAURANT.social.whatsapp} target="_blank" rel="noreferrer" aria-label="WhatsApp">
                 <Icon name={ICONS.whatsapp} size="big" />
               </a>
             </div>
           </Grid.Column>
 
-          {/* Columna derecha: Info & Mapa */}
-          <Grid.Column
-            computer={8}
-            tablet={16}
-            mobile={16}
-            className="info-col"
-            textAlign="left"
-            verticalAlign="top"
-          >
-            <Header as="h3" className="section-title">Visítanos</Header>
+          <Grid.Column computer={8} tablet={16} mobile={16} className="info-col" textAlign="left" verticalAlign="top">
+            <Header as="h3" className="section-title">{t("contact.visit_us")}</Header>
 
             <Segment tertiary className="info-card">
               <List relaxed>
@@ -290,12 +253,8 @@ export default function ContactoUbicacion() {
                     <List.Description>
                       {config.RESTAURANT.address} – {config.RESTAURANT.neighborhood}
                     </List.Description>
-                    <a
-                      href={config.RESTAURANT.maps.directionsUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <Icon name={ICONS.direction} /> Cómo llegar
+                    <a href={config.RESTAURANT.maps.directionsUrl} target="_blank" rel="noreferrer">
+                      <Icon name={ICONS.direction} /> {t("contact.directions")}
                     </a>
                   </List.Content>
                 </List.Item>
@@ -303,7 +262,7 @@ export default function ContactoUbicacion() {
                 <List.Item>
                   <Icon name={ICONS.clock} size="large" />
                   <List.Content>
-                    <List.Header>Horarios</List.Header>
+                    <List.Header>{t("contact.schedule")}</List.Header>
                     <List.List>
                       {config.RESTAURANT.schedules.map((schedule) => (
                         <List.Item key={schedule.day}>
@@ -317,7 +276,7 @@ export default function ContactoUbicacion() {
                 <List.Item>
                   <Icon name={ICONS.phone} size="large" />
                   <List.Content>
-                    <List.Header>Reservas</List.Header>
+                    <List.Header>{t("contact.reservations")}</List.Header>
                     <a href={`tel:${config.RESTAURANT.phone.replace(/\s|-/g, '')}`}>
                       {config.RESTAURANT.phone}
                     </a>
@@ -330,7 +289,7 @@ export default function ContactoUbicacion() {
               <Embed
                 active
                 iframe={{
-                  title: 'Mapa del restaurante',
+                  title: t("contact.map_title"),
                   src: config.RESTAURANT.maps.embedUrl,
                   allowFullScreen: true,
                   loading: 'lazy',
@@ -347,7 +306,7 @@ export default function ContactoUbicacion() {
       <Segment basic textAlign="center">
         <Header as="h5" disabled>
           <Icon name={ICONS.shield} />
-          {MESSAGES.privacy}
+          {t("contact.privacy")}
         </Header>
       </Segment>
     </Container>

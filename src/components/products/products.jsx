@@ -11,6 +11,7 @@ import {
 } from "semantic-ui-react";
 import { useApp } from "../../context/AppContext";
 import { APP_CONFIG, MESSAGES, ICONS } from "../../config/constants";
+import { useTranslation } from "react-i18next"; // 🌍 Agregado para internacionalización
 import "./Products.css";
 
 const Products = () => {
@@ -19,6 +20,7 @@ const Products = () => {
   const [visibleCount, setVisibleCount] = useState(config.APP.productsPerPage);
   const [addedMessage, setAddedMessage] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation(); // 🌍 Hook de traducción
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -64,7 +66,6 @@ const Products = () => {
         paddingBottom: "0.5em",
       }}
     >
-      {/* Fondo oscuro permanente */}
       <div
         className="products-overlay"
         style={{
@@ -87,7 +88,6 @@ const Products = () => {
           paddingTop: "4em",
         }}
       >
-        {/* 🔶 Título con estilo cálido y resaltado */}
         <Header
           as="h1"
           className="products-header"
@@ -117,7 +117,6 @@ const Products = () => {
           </Message>
         )}
 
-        {/* 🟧 Tarjetas mejoradas */}
         <Card.Group
           centered
           itemsPerRow={4}
@@ -229,7 +228,7 @@ const Products = () => {
           ))}
         </Card.Group>
 
-        {/* 🟢 Botón Ver más sin tocar */}
+        {/* 🌍 Botón Ver más traducido */}
         {visibleCount < products.length && (
           <div
             style={{
@@ -270,7 +269,7 @@ const Products = () => {
                   "0 4px 15px rgba(255, 123, 0, 0.4)";
               }}
             >
-              Ver más
+              {t("products.load_more")}
               <Icon name={ICONS.arrowDown} />
             </Button>
           </div>

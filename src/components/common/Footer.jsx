@@ -2,9 +2,11 @@ import React from 'react';
 import { Container, Grid, Header, Icon, Segment, Divider } from 'semantic-ui-react';
 import { useApp } from '../../context/AppContext';
 import { APP_CONFIG } from '../../config/constants';
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
   const { config } = useApp();
+  const { t } = useTranslation();
 
   return (
     <Segment
@@ -17,7 +19,7 @@ const Footer = () => {
         border: 'none',
         borderRadius: '0',
         padding: '50px 0',
-        marginTop: "2em" 
+        marginTop: "2em"
       }}
     >
       <Container textAlign="center">
@@ -35,16 +37,16 @@ const Footer = () => {
             textShadow: '2px 2px 6px rgba(0,0,0,0.4)'
           }}
         >
-          Tradición, fuego y sabor artesanal
+          {t("footer.title")}
         </Header>
 
-        {/* 🔶 Grid principal con mejor espaciado */}
+        {/* 🔶 Grid principal */}
         <Grid stackable centered columns={3}>
-          {/* Horarios */}
+          {/* 🕒 Horarios */}
           <Grid.Column width={4.5}>
             <Header as="h4" inverted style={{ color: 'white', marginBottom: '15px' }}>
               <Icon name="clock" style={{ color: '#ffdd44' }} />
-              Horarios de Atención
+              {t("footer.schedule_title")}
             </Header>
             <div style={{ color: 'white', lineHeight: '1.8' }}>
               {config.RESTAURANT.schedules.map((schedule, index) => (
@@ -55,11 +57,11 @@ const Footer = () => {
             </div>
           </Grid.Column>
 
-          {/* Contacto */}
+          {/* ☎️ Contacto */}
           <Grid.Column width={4.5}>
             <Header as="h4" inverted style={{ color: 'white', marginBottom: '15px' }}>
               <Icon name="phone" style={{ color: '#ffdd44' }} />
-              Contacto
+              {t("footer.contact_title")}
             </Header>
             <div style={{ color: 'white', lineHeight: '1.8' }}>
               <p>
@@ -77,11 +79,11 @@ const Footer = () => {
             </div>
           </Grid.Column>
 
-          {/* Redes Sociales */}
+          {/* 🌐 Redes Sociales */}
           <Grid.Column width={4.5}>
             <Header as="h4" inverted style={{ color: 'white', marginBottom: '15px' }}>
               <Icon name="share alternate" style={{ color: '#ffdd44' }} />
-              Síguenos
+              {t("footer.social_title")}
             </Header>
             <div style={{ marginBottom: '15px' }}>
               <Icon
@@ -107,14 +109,14 @@ const Footer = () => {
               />
             </div>
             <p style={{ color: 'white', fontSize: '0.9em' }}>
-              © 2024 {config.RESTAURANT.name}. Todos los derechos reservados.
+              © 2024 {config.RESTAURANT.name}. {t("footer.rights")}
             </p>
           </Grid.Column>
         </Grid>
 
         <Divider style={{ borderColor: 'rgba(255, 255, 255, 0.3)', marginTop: '40px' }} />
 
-        {/* Mensaje Final */}
+        {/* 📍 Mensaje Final */}
         <div style={{ textAlign: 'center', marginTop: '20px' }}>
           <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.9em', margin: '10px 0 0 0' }}>
             {config.RESTAURANT.neighborhood} • {config.RESTAURANT.location}
