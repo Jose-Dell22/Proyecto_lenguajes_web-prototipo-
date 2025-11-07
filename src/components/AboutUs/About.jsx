@@ -216,9 +216,20 @@ export default function AboutUs() {
           <p style={{ fontSize: "1.2em", lineHeight: "1.8em", margin: "2em 0" }}>
             {t("about.cta_description")}
           </p>
-          <Button as={Link} to="/contacto" size="large" color="black" inverted>
-            <Icon name="calendar" />
+
+          {/* 👉 Redirige al formulario de reservas */}
+          <Button
+            as={Link}
+            to={ (config?.ROUTES?.RESERVATION) || "/reservar" }
+            size="large"
+            color="black"
+            inverted
+            aria-label="Ir al formulario de reservas"
+          >
+            <Icon name="calendar check" />
             {t("about.cta_button")}
+
+
           </Button>
         </Segment>
       </Container>

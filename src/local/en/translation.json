@@ -122,7 +122,66 @@
     "cta_title": "Want to Visit Us?",
     "cta_description": "Come and enjoy the unique experience of our barrel-grilled meats. We await you with top quality and warm hospitality.",
     "cta_button": "Make a Reservation"
+  },
+
+ 
+  "reservation": {
+    "title": "Reservation",
+    "subtitle": "Tell us your details and we’ll prepare your table.",
+    "cuts": {
+      "picanha": "Picanha",
+      "asado": "Short Rib",
+      "entrania": "Skirt Steak",
+      "churrasco": "Churrasco"
+    },
+    "doneness": {
+      "blue": "Blue",
+      "rare": "Rare",
+      "medium": "Medium",
+      "threeQuarters": "Medium-well",
+      "well": "Well done"
+    },
+    "fields": {
+      "firstName": { "label": "First name", "placeholder": "Your first name" },
+      "lastName": { "label": "Last name", "placeholder": "Your last name" },
+      "phone": { "label": "Phone", "placeholder": "WhatsApp or mobile" },
+      "email": { "label": "Email", "placeholder": "your@email.com" },
+      "date": { "label": "Date" },
+      "time": { "label": "Time" },
+      "people": { "label": "People" },
+      "cut": { "label": "Cut" },
+      "qty": { "label": "Qty", "placeholder": "e.g., 2" },
+      "doneness": { "label": "Doneness", "placeholder": "Choose doneness" },
+      "table": { "label": "Table (optional)", "placeholder": "e.g., Terrace 4" },
+      "notes": { "label": "Notes", "placeholder": "Allergies, special occasion, child seat, etc." }
+    },
+    "sections": { "cuts": "Preferred cuts (with quantity)" },
+    "placeholders": { "selectCut": "Select a cut" },
+    "labels": {
+      "totalPortions": "Total portions: {{totalQty}}",
+      "people": "People: {{personas}}"
+    },
+    "actions": {
+      "reserve": "Reserve",
+      "addCut": "Add cut",
+      "removeLine": "Remove line",
+      "reserveAnother": "Make another reservation",
+      "backToAbout": "Continue on About Us"
+    },
+    "errors": {
+      "header": "Check the fields",
+      "nameRequired": "First and last name are required.",
+      "phoneRequired": "Please add a contact phone.",
+      "datetimeRequired": "Select date and time.",
+      "peopleRequired": "Specify number of people.",
+      "qtyExceedsPeople": "Total portions ({{totalQty}}) cannot exceed number of people ({{personas}}).",
+      "submitFailed": "We couldn’t process your reservation. Please try again."
+    },
+    "success": {
+      "title": "Reservation received!",
+      "body": "We’ll confirm via WhatsApp or email. Redirecting in a moment…"
+    }
   }
-
-
 }
+
+

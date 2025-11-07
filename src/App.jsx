@@ -10,6 +10,7 @@ import AboutUs from "./components/AboutUs/About";
 import MenuComponent from "./components/MenuComponent/menuComponent";
 import FloatingCart from "./components/common/FloatingCart";
 import Footer from "./components/common/Footer";
+import ReservationForm from "./components/Reservations/ReservationForm";
 
 import { useApp } from "./context/AppContext";
 import { MESSAGES } from "./config/constants";
@@ -106,6 +107,7 @@ const App = () => {
           <Route path={config.ROUTES.MENU_COMPONENT} element={<MenuComponent />} />
           <Route path={config.ROUTES.ABOUT} element={<AboutUs />} />
           <Route path="*" element={<NotFound />} />
+          <Route path={config.ROUTES.RESERVATION} element={<ReservationForm />} />
         </Routes>
 
         <FloatingCart />

@@ -6,6 +6,7 @@ import 'semantic-ui-css/semantic.min.css';
 import './styles.css';
 import './config/i18n';
 
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AppProvider>

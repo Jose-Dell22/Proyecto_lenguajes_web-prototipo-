@@ -121,5 +121,67 @@
     "cta_title": "想来体验吗？",
     "cta_description": "欢迎品尝我们独特的桶烤肉体验，我们以最佳品质与热情欢迎您！",
     "cta_button": "预订座位"
+  },
+
+  
+  "reservation": {
+    "title": "预订",
+    "subtitle": "请填写您的信息，我们将为您准备餐桌。",
+    "cuts": {
+      "picanha": "Picanha（牛臀峰）",
+      "asado": "Short Rib（牛小排）",
+      "entrania": "Skirt Steak（牛裙肉）",
+      "churrasco": "Churrasco（巴西烤牛排）"
+    },
+    "doneness": {
+      "blue": "蓝生（几乎不熟）",
+      "rare": "偏生（约三分熟）",
+      "medium": "五分熟",
+      "threeQuarters": "七分熟",
+      "well": "全熟"
+    },
+    "fields": {
+      "firstName": { "label": "名", "placeholder": "请输入名字" },
+      "lastName": { "label": "姓", "placeholder": "请输入姓氏" },
+      "phone": { "label": "电话", "placeholder": "WhatsApp 或手机号码" },
+      "email": { "label": "电子邮箱", "placeholder": "your@email.com" },
+      "date": { "label": "日期" },
+      "time": { "label": "时间" },
+      "people": { "label": "人数" },
+      "cut": { "label": "牛排部位" },
+      "qty": { "label": "份数", "placeholder": "例如：2" },
+      "doneness": { "label": "熟度", "placeholder": "选择熟度" },
+      "table": { "label": "餐桌（可选）", "placeholder": "例如：露台 4" },
+      "notes": { "label": "备注", "placeholder": "过敏信息、特殊场合、儿童座椅等" }
+    },
+    "sections": { "cuts": "偏好部位（可多行并设置份数）" },
+    "placeholders": { "selectCut": "选择一个部位" },
+    "labels": {
+      "totalPortions": "总份数：{{totalQty}}",
+      "people": "人数：{{personas}}"
+    },
+    "actions": {
+      "reserve": "预订",
+      "addCut": "添加部位",
+      "removeLine": "删除一行",
+      "reserveAnother": "再提交一份预订",
+      "backToAbout": "返回“关于我们”"
+    },
+    "errors": {
+      "header": "请检查表单",
+      "nameRequired": "名字和姓氏为必填项。",
+      "phoneRequired": "请填写联系电话。",
+      "datetimeRequired": "请选择日期和时间。",
+      "peopleRequired": "请填写人数。",
+      "qtyExceedsPeople": "份数总和（{{totalQty}}）不能超过人数（{{personas}}）。",
+      "submitFailed": "未能提交预订，请重试。"
+    },
+    "success": {
+      "title": "预订已收到！",
+      "body": "我们将通过 WhatsApp 或邮箱与您确认。稍后将自动跳转…"
+    }
   }
 }
+
+
+

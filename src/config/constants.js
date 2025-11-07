@@ -54,6 +54,7 @@ export const APP_CONFIG = {
     CONTACT: '/contacto',
     ABOUT: '/about',
     MENU_COMPONENT: '/MenuComponent',
+    RESERVATION: "/reservar",
   },
 };
 

@@ -173,6 +173,25 @@
   margin-left: 8px; 
 }
 
+/* ===== Nuevo: Título con icono a la derecha y ocultar ícono hero grande ===== */
+.contact-page .contact-title .title-row{
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  line-height: 1;
+}
+.contact-page .contact-title .title-icon{
+  color: var(--accent);
+  font-size: 1.15em;
+  translate: 0 .04em;
+}
+/* si existía un icono gigante tipo “hero” en la parte superior, se oculta */
+.contact-page .page-hero-icon,
+.contact-page .hero-icon,
+.contact-page .contact-hero-icon{
+  display: none !important;
+}
+
 /* Responsive */
 @media (max-width: 767px){
   .contact-page .contact-card.ui.segment{ padding: 1rem !important; }

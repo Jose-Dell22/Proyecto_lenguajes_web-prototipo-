@@ -121,6 +121,66 @@
     "cta_title": "¿Quieres Visitarnos?",
     "cta_description": "Ven y vive la experiencia única de nuestras carnes al barril. Te esperamos con la mejor calidad y la más cálida bienvenida.",
     "cta_button": "Hacer Reserva"
-  }
+  },
 
+  
+  "reservation": {
+    "title": "Reserva",
+    "subtitle": "Indícanos tus datos y prepararemos tu mesa.",
+    "cuts": {
+      "picanha": "Picaña",
+      "asado": "Asado de tira",
+      "entrania": "Entraña",
+      "churrasco": "Churrasco"
+    },
+    "doneness": {
+      "blue": "Azul (Blue)",
+      "rare": "Rojo (Poco cocido)",
+      "medium": "Término medio",
+      "threeQuarters": "Tres cuartos",
+      "well": "Bien cocido"
+    },
+    "fields": {
+      "firstName": { "label": "Nombre", "placeholder": "Tu nombre" },
+      "lastName": { "label": "Apellido", "placeholder": "Tu apellido" },
+      "phone": { "label": "Teléfono", "placeholder": "WhatsApp o móvil" },
+      "email": { "label": "Email", "placeholder": "tucorreo@ejemplo.com" },
+      "date": { "label": "Fecha" },
+      "time": { "label": "Hora" },
+      "people": { "label": "Personas" },
+      "cut": { "label": "Corte" },
+      "qty": { "label": "Cantidad", "placeholder": "Ej: 2" },
+      "doneness": { "label": "Término de cocción", "placeholder": "Elige término" },
+      "table": { "label": "Mesa (opcional)", "placeholder": "Ej: Terraza 4" },
+      "notes": { "label": "Notas", "placeholder": "Alergias, ocasión especial, silla para niños, etc." }
+    },
+    "sections": { "cuts": "Cortes preferidos (con cantidad)" },
+    "placeholders": { "selectCut": "Selecciona un corte" },
+    "labels": {
+      "totalPortions": "Total porciones: {{totalQty}}",
+      "people": "Personas: {{personas}}"
+    },
+    "actions": {
+      "reserve": "Reservar",
+      "addCut": "Añadir corte",
+      "removeLine": "Eliminar línea",
+      "reserveAnother": "Hacer otra reserva",
+      "backToAbout": "Seguir en Sobre Nosotros"
+    },
+    "errors": {
+      "header": "Revisa los campos",
+      "nameRequired": "Nombre y apellido son obligatorios.",
+      "phoneRequired": "Agrega un teléfono de contacto.",
+      "datetimeRequired": "Selecciona fecha y hora.",
+      "peopleRequired": "Indica el número de personas.",
+      "qtyExceedsPeople": "La suma de porciones ({{totalQty}}) no puede exceder el número de personas ({{personas}}).",
+      "submitFailed": "No pudimos procesar tu reserva. Intenta de nuevo."
+    },
+    "success": {
+      "title": "¡Reserva recibida!",
+      "body": "Te confirmaremos por WhatsApp o correo. Te redirigiremos en un momento…"
+    }
+  }
 }
+
+
