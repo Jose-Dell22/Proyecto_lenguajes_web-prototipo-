@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { Button, Icon, Popup, Segment, List, Header, Divider } from 'semantic-ui-react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
+import { useTranslation } from 'react-i18next';
 
 const FloatingCart = () => {
   const navigate = useNavigate();
   const { cart, removeFromCart, decreaseQuantity, increaseQuantity, clearCart, getCartTotal, getCartItemsCount, config } = useApp();
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
 
   const handleGoToContact = () => {
     navigate(config.ROUTES.CONTACT);
@@ -16,9 +18,7 @@ const FloatingCart = () => {
   const cartItemsCount = getCartItemsCount();
   const cartTotal = getCartTotal();
 
-  if (cartItemsCount === 0) {
-    return null;
-  }
+  if (cartItemsCount === 0) return null;
 
   return (
     <Popup
@@ -44,10 +44,10 @@ const FloatingCart = () => {
         <Segment>
           <Header as="h4" textAlign="center">
             <Icon name="shopping cart" />
-            Carrito de Compras
+            {t("cart.title")}
           </Header>
           <Divider />
-          
+
           {cart.length > 0 ? (
             <>
               <List divided relaxed>
@@ -60,7 +60,7 @@ const FloatingCart = () => {
                           size="mini"
                           color="orange"
                           onClick={() => decreaseQuantity(index)}
-                          title="Disminuir cantidad"
+                          title={t("cart.decrease")}
                           disabled={item.quantity <= 1}
                         />
                         <span style={{ minWidth: '20px', textAlign: 'center', fontWeight: 'bold' }}>
@@ -71,14 +71,14 @@ const FloatingCart = () => {
                           size="mini"
                           color="orange"
                           onClick={() => increaseQuantity(index)}
-                          title="Aumentar cantidad"
+                          title={t("cart.increase")}
                         />
                         <Button
                           icon="trash"
                           size="mini"
                           color="red"
                           onClick={() => removeFromCart(index)}
-                          title="Eliminar producto"
+                          title={t("cart.remove")}
                         />
                       </div>
                     </List.Content>
@@ -91,13 +91,13 @@ const FloatingCart = () => {
                   </List.Item>
                 ))}
               </List>
-              
+
               <Divider />
-              
+
               <Header as="h5" textAlign="center">
-                Total: ${cartTotal.toLocaleString("es-CO")}
+                {t("cart.total")}: ${cartTotal.toLocaleString("es-CO")}
               </Header>
-              
+
               <Button
                 color="orange"
                 fluid
@@ -105,9 +105,9 @@ const FloatingCart = () => {
                 style={{ marginTop: "1em" }}
               >
                 <Icon name="map marker alternate" />
-                Ir a Contacto/Ubicación
+                {t("cart.goToContact")}
               </Button>
-              
+
               <Button
                 color="red"
                 fluid
@@ -116,11 +116,11 @@ const FloatingCart = () => {
                 style={{ marginTop: "0.5em" }}
               >
                 <Icon name="trash" />
-                Limpiar Carrito
+                {t("cart.clear")}
               </Button>
             </>
           ) : (
-            <p>Carrito vacío</p>
+            <p>{t("cart.empty")}</p>
           )}
         </Segment>
       }

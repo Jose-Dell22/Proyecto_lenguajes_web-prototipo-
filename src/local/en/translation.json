@@ -1,133 +1,130 @@
 {
   "navbar": {
     "home": "Home",
-    "specialties": "Barrel Specialties",
+    "specialties": "Specialties",
     "products": "Products",
     "contact": "Contact",
     "about": "About Us",
     "language": "Language"
   },
   "footer": {
-   "title": "Tradition, fire, and artisanal flavor",
+    "title": "Tradition, Fire & Artisan Flavor",
     "schedule_title": "Opening Hours",
     "contact_title": "Contact",
     "social_title": "Follow Us",
     "rights": "All rights reserved."
   },
   "home": {
-    "subtitle": "The authentic flavor of fire",
+    "subtitle": "The authentic taste of fire",
     "explore_menu": "Explore our menu",
-    "explore_world": "Explore Our World",
-    "experience_text": "Discover the magic of our barrel-grilled meats",
+    "explore_world": "Explore our world",
+    "experience_text": "Discover the magic of our barrel-grilled meat",
     "menu_title": "Our Menu",
-    "menu_description": "Discover our best dishes prepared using traditional barrel techniques.",
-    "menu_button": "See Full Menu",
+    "menu_description": "Explore the finest dishes prepared with our traditional barrel-cooking technique.",
+    "menu_button": "View full menu",
     "location_title": "Location",
-    "location_description": "Come visit us and enjoy the unique experience of our barrel-cooked meats.",
-    "location_button": "View Location",
+    "location_description": "Visit us and enjoy the unique flavor of our barrel grill.",
+    "location_button": "See location",
     "about_title": "About Us",
-    "about_description": "Learn the story behind our unforgettable flavor.",
-    "about_button": "Read More",
-    "specials_title": "Specials",
-    "specials_description": "Our most outstanding dishes and specialties you must try.",
-    "specials_button": "View Specials"
+    "about_description": "Learn the story behind our unforgettable flavors.",
+    "about_button": "Read more",
+    "specials_title": "Specialties",
+    "specials_description": "Our most popular dishes and must-try specialties.",
+    "specials_button": "View specialties"
   },
   "menu": {
-    "title": "Barrel Specials",
-    "added_message": "has been added to the cart.",
+    "title": "Barrel Specialties",
+    "added_message": "Added to cart.",
     "items": {
       "beef_barrel": {
-        "title": "Barrel-Cooked Beef",
-        "description": "Juicy cut slowly cooked in a barrel with irresistible smoky flavor."
+        "title": "Barrel Beef",
+        "description": "Juicy beef slow-cooked in a barrel, infused with irresistible smoky flavor."
       },
       "ribs_bbq": {
         "title": "BBQ Ribs",
-        "description": "Tender ribs coated in handcrafted BBQ sauce, served with lime and herbs."
+        "description": "Tender ribs glazed with homemade BBQ sauce, served with lime and herbs."
       },
       "sausage": {
         "title": "Grilled Sausage",
-        "description": "Handmade sausages grilled over charcoal, served with arepa and chimichurri."
+        "description": "Handcrafted sausage grilled over charcoal, served with corn cake and chimichurri."
       },
       "picanha": {
-        "title": "Picanha Steak",
+        "title": "Picanha",
         "description": "Premium cut seasoned with coarse salt and garlic butter, tender and juicy."
       },
       "chicken_breast": {
         "title": "Grilled Chicken Breast",
-        "description": "Chicken breast marinated with fine herbs and grilled to perfection."
+        "description": "Chicken breast marinated in herbs and grilled to perfection."
       },
       "grill_trilogy": {
         "title": "Grill Trilogy",
-        "description": "Selection of three cuts —sausage, picanha, and loin— cooked in the barrel, served with criolla potatoes and artisan chimichurri."
+        "description": "A selection of three meats —sausage, picanha, and tenderloin— cooked in a barrel with potatoes and homemade chimichurri."
       }
     }
   },
-  
   "products": {
     "load_more": "Load more"
   },
   "contact": {
     "title": "Contact Us",
-    "subtitle": "Reservations, questions, or suggestions? Write to us.",
-    "cart_title": "Items in Your Cart",
+    "subtitle": "Reservations, questions, or suggestions? Send us a message.",
+    "cart_title": "Items in Cart",
     "decrease": "Decrease quantity",
     "increase": "Increase quantity",
-    "remove": "Remove product",
+    "remove": "Remove item",
     "price": "Price",
     "total": "Order Total",
     "clear_cart": "Clear Cart",
-    "write_us": "Write to Us",
+    "write_us": "Write to us",
     "error_header": "Oops…",
-    "sent": "Message Sent",
+    "sent": "Message sent",
     "name": "Name",
     "name_placeholder": "Your name",
     "email": "Email",
-    "email_placeholder": "your@email.com",
+    "email_placeholder": "Your email",
     "message": "Message",
     "message_placeholder": "How can we help you?",
     "send": "Send",
-    "also_here": "Also reach us here",
-    "visit_us": "Visit Us",
-    "directions": "Get Directions",
+    "also_here": "You can also reach us via",
+    "visit_us": "Visit us",
+    "directions": "Get directions",
     "schedule": "Opening Hours",
     "reservations": "Reservations",
     "map_title": "Restaurant Map",
-    "privacy": "Your privacy is important to us",
-    "success": "Your message has been sent successfully.",
+    "privacy": "Your privacy matters to us",
+    "success": "Your message was sent successfully.",
     "error": "Error sending message."
   },
   "about": {
-    "hero_subtitle": "A tradition of flavor, passion, and authenticity",
+    "hero_subtitle": "Flavor, Passion & True Tradition",
     "history_title": "Our Story",
-    "history_paragraph1": "Founded in 2010, {{name}} was born from a passion to preserve the art of cooking meats in the most authentic way. What began as a small family venture has become a culinary reference.",
-    "history_paragraph2": "For over 10 years, we have maintained our commitment to excellence, personally selecting each cut and using traditional techniques.",
-    "stats_title": "Our Numbers",
+    "history_paragraph1": "Founded in 2010, {{name}} was born from a love for traditional cooking. From a small family restaurant to a recognized culinary brand.",
+    "history_paragraph2": "For over a decade, we’ve maintained excellence by hand-selecting each cut and preserving traditional techniques.",
+    "stats_title": "Our Stats",
     "stats_years": "Years of Tradition",
     "stats_clients": "Daily Customers",
-    "stats_cuts": "Premium Cuts",
+    "stats_cuts": "Selected Cuts",
     "stats_satisfaction": "Satisfaction",
     "values_title": "Our Values",
     "value_quality_title": "Premium Quality",
-    "value_quality_desc": "We use only the best meats, carefully selected and barrel-grilled to perfection.",
+    "value_quality_desc": "We only use top-quality meats, cooked over natural charcoal in barrels.",
     "value_tradition_title": "Tradition & Passion",
-    "value_tradition_desc": "Every dish reflects our commitment to culinary heritage and passion for memorable experiences.",
+    "value_tradition_desc": "Each dish reflects our devotion to culinary tradition and passion.",
     "value_experience_title": "Authentic Experience",
-    "value_experience_desc": "We strive to create a warm atmosphere where every guest enjoys the true essence of barrel-grilled meats.",
+    "value_experience_desc": "We create a warm environment where every guest can enjoy a true barrel-grill experience.",
     "team_title": "Our Team",
-    "team_description": "A team of experts passionate about the art of barrel-grilled cooking, each bringing years of dedication.",
-    "team_owner": "Owner & Chef",
+    "team_description": "A passionate culinary team, each member bringing experience and dedication.",
+    "team_owner": "Owner & Head Chef",
     "team_grill_chef": "Grill Chef",
     "team_manager": "Restaurant Manager",
     "team_assistant_chef": "Assistant Chef",
-    "cta_title": "Want to Visit Us?",
-    "cta_description": "Come and enjoy the unique experience of our barrel-grilled meats. We await you with top quality and warm hospitality.",
-    "cta_button": "Make a Reservation"
+    "cta_title": "Ready to experience it?",
+    "cta_description": "Come enjoy our unique barrel-grilled experience — we welcome you with quality and warmth!",
+    "cta_button": "Book a Table"
   },
-
- 
   "reservation": {
-    "title": "Reservation",
-    "subtitle": "Tell us your details and we’ll prepare your table.",
+    "title": "Reservations",
+    "subtitle": "Fill out your details and we’ll prepare your table.",
     "cuts": {
       "picanha": "Picanha",
       "asado": "Short Rib",
@@ -135,27 +132,27 @@
       "churrasco": "Churrasco"
     },
     "doneness": {
-      "blue": "Blue",
-      "rare": "Rare",
+      "blue": "Blue (rarely cooked)",
+      "rare": "Rare (lightly cooked)",
       "medium": "Medium",
       "threeQuarters": "Medium-well",
       "well": "Well done"
     },
     "fields": {
-      "firstName": { "label": "First name", "placeholder": "Your first name" },
-      "lastName": { "label": "Last name", "placeholder": "Your last name" },
-      "phone": { "label": "Phone", "placeholder": "WhatsApp or mobile" },
+      "firstName": { "label": "First Name", "placeholder": "Enter your first name" },
+      "lastName": { "label": "Last Name", "placeholder": "Enter your last name" },
+      "phone": { "label": "Phone", "placeholder": "WhatsApp or mobile number" },
       "email": { "label": "Email", "placeholder": "your@email.com" },
       "date": { "label": "Date" },
       "time": { "label": "Time" },
       "people": { "label": "People" },
-      "cut": { "label": "Cut" },
-      "qty": { "label": "Qty", "placeholder": "e.g., 2" },
-      "doneness": { "label": "Doneness", "placeholder": "Choose doneness" },
-      "table": { "label": "Table (optional)", "placeholder": "e.g., Terrace 4" },
-      "notes": { "label": "Notes", "placeholder": "Allergies, special occasion, child seat, etc." }
+      "cut": { "label": "Meat Cut" },
+      "qty": { "label": "Portions", "placeholder": "Example: 2" },
+      "doneness": { "label": "Doneness", "placeholder": "Select doneness" },
+      "table": { "label": "Table (optional)", "placeholder": "Example: Terrace 4" },
+      "notes": { "label": "Notes", "placeholder": "Allergies, occasions, etc." }
     },
-    "sections": { "cuts": "Preferred cuts (with quantity)" },
+    "sections": { "cuts": "Cut Preferences (add multiple lines)" },
     "placeholders": { "selectCut": "Select a cut" },
     "labels": {
       "totalPortions": "Total portions: {{totalQty}}",
@@ -166,22 +163,30 @@
       "addCut": "Add cut",
       "removeLine": "Remove line",
       "reserveAnother": "Make another reservation",
-      "backToAbout": "Continue on About Us"
+      "backToAbout": "Back to 'About Us'"
     },
     "errors": {
-      "header": "Check the fields",
+      "header": "Please check the form",
       "nameRequired": "First and last name are required.",
-      "phoneRequired": "Please add a contact phone.",
+      "phoneRequired": "Phone number is required.",
       "datetimeRequired": "Select date and time.",
-      "peopleRequired": "Specify number of people.",
+      "peopleRequired": "Number of people is required.",
       "qtyExceedsPeople": "Total portions ({{totalQty}}) cannot exceed number of people ({{personas}}).",
-      "submitFailed": "We couldn’t process your reservation. Please try again."
+      "submitFailed": "Error submitting reservation, please try again."
     },
     "success": {
-      "title": "Reservation received!",
-      "body": "We’ll confirm via WhatsApp or email. Redirecting in a moment…"
+      "title": "Reservation Received!",
+      "body": "We’ll contact you via WhatsApp or email. Redirecting shortly…"
     }
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Cart is empty",
+    "total": "Total",
+    "goToContact": "Go to Contact/Location",
+    "clear": "Clear Cart",
+    "decrease": "Decrease quantity",
+    "increase": "Increase quantity",
+    "remove": "Remove product"
   }
 }
-
-

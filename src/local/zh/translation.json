@@ -62,7 +62,7 @@
       }
     }
   },
-    "products": {
+  "products": {
     "load_more": "加载更多"
   },
   "contact": {
@@ -95,7 +95,7 @@
     "success": "您的消息已成功发送。",
     "error": "发送消息时出错。"
   },
-   "about": {
+  "about": {
     "hero_subtitle": "味道、热情与真实的传统",
     "history_title": "我们的故事",
     "history_paragraph1": "成立于2010年，{{name}}源自对传统烹饪技艺的热爱。从一个家庭小餐馆发展为知名美食品牌。",
@@ -122,8 +122,6 @@
     "cta_description": "欢迎品尝我们独特的桶烤肉体验，我们以最佳品质与热情欢迎您！",
     "cta_button": "预订座位"
   },
-
-  
   "reservation": {
     "title": "预订",
     "subtitle": "请填写您的信息，我们将为您准备餐桌。",
@@ -180,8 +178,15 @@
       "title": "预订已收到！",
       "body": "我们将通过 WhatsApp 或邮箱与您确认。稍后将自动跳转…"
     }
+  },
+  "cart": {
+    "title": "购物车",
+    "empty": "购物车是空的",
+    "total": "总计",
+    "goToContact": "前往联系/位置",
+    "clear": "清空购物车",
+    "decrease": "减少数量",
+    "increase": "增加数量",
+    "remove": "删除商品"
   }
 }
-
-
-
