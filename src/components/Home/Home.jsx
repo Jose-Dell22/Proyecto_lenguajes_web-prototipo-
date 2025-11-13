@@ -16,10 +16,16 @@ import { useApp } from "../../context/AppContext";
 import { APP_CONFIG } from "../../config/constants";
 import { useTranslation } from "react-i18next"; // 🌍 Soporte de idiomas
 
+const heroImages = [
+  "https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=2000&q=80",
+  "https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=2000&q=80",
+  "https://images.unsplash.com/photo-1616628182507-9f858d7a1b8a?auto=format&fit=crop&w=2000&q=80",
+];
+
 const Home = () => {
   const navigate = useNavigate();
   const { config, addToCart } = useApp();
-  const [featuredProducts, setFeaturedProducts] = useState([]);
+  const [featuredProducts, setFeaturedProducts, currentImage, setCurrentImage] = useState([]);
   const [loading, setLoading] = useState(true);
   const { t } = useTranslation();
 
@@ -67,7 +73,6 @@ const Home = () => {
         title={config.RESTAURANT.name}
         subtitle={t("home.subtitle")}
         buttonText={t("home.explore_menu")}
-        backgroundImage="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
         onButtonClick={() => navigate(config.ROUTES.PRODUCTS)}
       />
 

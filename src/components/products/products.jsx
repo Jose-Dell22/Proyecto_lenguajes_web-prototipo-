@@ -10,17 +10,17 @@ import {
   Message,
 } from "semantic-ui-react";
 import { useApp } from "../../context/AppContext";
-import { APP_CONFIG, MESSAGES, ICONS } from "../../config/constants";
-import { useTranslation } from "react-i18next"; // 🌍 Agregado para internacionalización
+import { APP_CONFIG, ICONS } from "../../config/constants";
+import { useTranslation } from "react-i18next";
 import "./Products.css";
 
 const Products = () => {
-  const { addToCart, getCartItemsCount, config } = useApp();
+  const { addToCart, config } = useApp();
   const [products, setProducts] = useState([]);
   const [visibleCount, setVisibleCount] = useState(config.APP.productsPerPage);
   const [addedMessage, setAddedMessage] = useState(null);
   const [loading, setLoading] = useState(true);
-  const { t } = useTranslation(); // 🌍 Hook de traducción
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -50,7 +50,7 @@ const Products = () => {
         active
         inline="centered"
         size="large"
-        content={MESSAGES.loadingProducts}
+        content={t("loadingProducts")}
       />
     );
   }
@@ -74,7 +74,7 @@ const Products = () => {
           left: 0,
           width: "100%",
           height: "100%",
-          background: "rgba(0, 0, 0, 0.75)",
+          background: "rgba(0,0,0,0.75)",
           zIndex: 0,
         }}
       />
@@ -82,11 +82,7 @@ const Products = () => {
       <Container
         textAlign="center"
         className="products-content"
-        style={{
-          position: "relative",
-          zIndex: 1,
-          paddingTop: "4em",
-        }}
+        style={{ position: "relative", zIndex: 1, paddingTop: "4em" }}
       >
         <Header
           as="h1"
@@ -99,7 +95,7 @@ const Products = () => {
             textTransform: "uppercase",
             letterSpacing: "2px",
             background: "linear-gradient(45deg, #ff7b00, #ff4500)",
-            boxShadow: "0 4px 15px rgba(255, 123, 0, 0.4)",
+            boxShadow: "0 4px 15px rgba(255,123,0,0.4)",
             fontSize: "1.8em",
             fontWeight: "800",
             transition: "transform 0.3s ease",
@@ -113,7 +109,7 @@ const Products = () => {
         {addedMessage && (
           <Message positive style={{ marginTop: "1em" }}>
             <Icon name={ICONS.check} />
-            <strong>{addedMessage}</strong> {MESSAGES.productAdded}
+            <strong>{addedMessage}</strong> {t("menu.added_message")}
           </Message>
         )}
 
@@ -207,18 +203,18 @@ const Products = () => {
                   color="orange"
                   onClick={() => handleAddToCart(item)}
                   style={{
-                    boxShadow: "0 0 12px rgba(255, 136, 0, 0.4)",
+                    boxShadow: "0 0 12px rgba(255,136,0,0.4)",
                     transition: "all 0.2s ease-in-out",
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = "scale(1.1)";
                     e.currentTarget.style.boxShadow =
-                      "0 0 18px rgba(255, 136, 0, 0.6)";
+                      "0 0 18px rgba(255,136,0,0.6)";
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = "scale(1)";
                     e.currentTarget.style.boxShadow =
-                      "0 0 12px rgba(255, 136, 0, 0.4)";
+                      "0 0 12px rgba(255,136,0,0.4)";
                   }}
                 >
                   <Icon name={ICONS.plus} />
@@ -228,7 +224,6 @@ const Products = () => {
           ))}
         </Card.Group>
 
-        {/* 🌍 Botón Ver más traducido */}
         {visibleCount < products.length && (
           <div
             style={{
@@ -251,7 +246,7 @@ const Products = () => {
               className="products-load-more"
               style={{
                 background: "linear-gradient(45deg, #ff7b00, #ff4500)",
-                boxShadow: "0 4px 15px rgba(255, 123, 0, 0.4)",
+                boxShadow: "0 4px 15px rgba(255,123,0,0.4)",
                 padding: "1em 1em",
                 border: "none",
                 color: "white",
@@ -261,12 +256,12 @@ const Products = () => {
               onMouseDown={(e) => {
                 e.currentTarget.style.transform = "scale(0.97)";
                 e.currentTarget.style.boxShadow =
-                  "0 2px 10px rgba(255, 123, 0, 0.6)";
+                  "0 2px 10px rgba(255,123,0,0.6)";
               }}
               onMouseUp={(e) => {
                 e.currentTarget.style.transform = "scale(1)";
                 e.currentTarget.style.boxShadow =
-                  "0 4px 15px rgba(255, 123, 0, 0.4)";
+                  "0 4px 15px rgba(255,123,0,0.4)";
               }}
             >
               {t("products.load_more")}

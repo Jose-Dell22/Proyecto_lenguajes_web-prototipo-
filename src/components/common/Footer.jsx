@@ -13,13 +13,12 @@ const Footer = () => {
       inverted
       color="orange"
       style={{
-        marginTop: '50px',
         background: 'linear-gradient(135deg, #ff7b00 0%, #ff4500 50%, #d35400 100%)',
         boxShadow: '0 -5px 20px rgba(255, 136, 0, 0.3)',
         border: 'none',
         borderRadius: '0',
         padding: '50px 0',
-        marginTop: "2em"
+        marginTop: '2em', 
       }}
     >
       <Container textAlign="center">
@@ -34,7 +33,7 @@ const Footer = () => {
             textTransform: 'uppercase',
             letterSpacing: '2px',
             marginBottom: '3em',
-            textShadow: '2px 2px 6px rgba(0,0,0,0.4)'
+            textShadow: '2px 2px 6px rgba(0,0,0,0.4)',
           }}
         >
           {t("footer.title")}
