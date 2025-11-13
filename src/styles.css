@@ -151,23 +151,31 @@ body, html {
   }
 }
 
-
 /* ===== NAVBAR ===== */
+.navbar {
+  min-height: 60px !important;
+}
+
 .navbar .navbar-inner{
-  display:flex !important;
-  align-items:center;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0 1rem !important;
+  min-height: 60px !important;
 }
 
 /* contenedor que reparte el espacio */
 .navbar .nav-spreader{
   flex: 1 1 auto !important;
   display: flex !important;
-  justify-content: space-evenly;   /* reparte TODOS por igual */
+  justify-content: space-evenly;
   align-items: center;
-  gap: .25rem;                     /* separador mínimo entre items */
+  gap: .25rem;
 }
 
 .navbar .brand{
+  display: flex !important;
+  align-items: center !important;
   color:#ff7a1a !important;
   font-weight:800 !important;
   margin-right:1rem !important;
@@ -188,7 +196,7 @@ body, html {
 }
 @media (max-width:767px){
   .navbar .nav-spreader{
-    flex-wrap: wrap;               /* evita que se apiñen */
+    flex-wrap: wrap;
     row-gap: .25rem;
     justify-content: center;
   }
@@ -207,4 +215,73 @@ body, html {
   background: transparent !important;
   color: #ff7a1a !important;
   font-weight: 800 !important;
+}
+
+.hamburger-toggle {
+  display: none;
+  cursor: pointer;
+}
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+  /* El Menu tiene display flex por defecto de Semantic UI */
+  .ui.menu.navbar {
+    display: flex !important;
+    align-items: center !important;
+    padding: 0 1rem !important;
+    min-height: 60px !important;
+  }
+
+  .navbar .navbar-inner {
+    display: flex !important;
+    align-items: center !important;
+    flex: 1 !important;
+    min-height: 60px !important;
+  }
+
+  /* Centra el título verticalmente */
+  .navbar .brand {
+    display: flex !important;
+    align-items: center !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+    height: 60px !important;
+    line-height: normal !important;
+  }
+
+  /* Hamburguesa alineada a la derecha */
+  .hamburger-toggle {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.5rem !important;
+    margin-left: auto !important;
+    position: absolute !important;
+    right: 1rem !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+
+  /* Oculta el menú normal */
+  .navbar .nav-spreader {
+    display: none !important;
+    flex-direction: column !important;
+    background-color: #1b1c1d;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    z-index: 100;
+    text-align: center;
+    padding: 1rem 0;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .navbar .nav-spreader.open {
+    display: flex !important;
+  }
+
+  .lang-menu {
+    display: none !important;
+  }
 }

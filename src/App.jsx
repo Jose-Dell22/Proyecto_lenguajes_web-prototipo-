@@ -1,4 +1,4 @@
-import React from "react";
+import React , { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 import { Menu, Container, Loader, Dimmer, Dropdown, Icon } from "semantic-ui-react";
 
@@ -21,6 +21,7 @@ import { useTranslation } from "react-i18next";
 const App = () => {
   const { loading, config } = useApp();
   const { t, i18n } = useTranslation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // 👈 Controla el menú móvil
 
   if (loading) {
     return (
@@ -44,59 +45,64 @@ const App = () => {
   return (
     <Router>
       {/* 🔝 NAVBAR */}
-      <Menu fixed="top" inverted borderless size="large" className="navbar" stackable>
-        <Container fluid className="navbar-inner">
-          {/* 🏠 Marca */}
-          <Menu.Item
-            as={NavLink}
-            to={config.ROUTES.HOME}
-            end
-            header
-            className="brand"
-            active={false}
-          >
-            {config.RESTAURANT.name}
-          </Menu.Item>
+     <Menu fixed="top" inverted borderless size="large" className="navbar" stackable>
+  <Container fluid className="navbar-inner">
+    {/* 🏠 Marca */}
+    <Menu.Item
+      as={NavLink}
+      to={config.ROUTES.HOME}
+      end
+      header
+      className="brand"
+      active={false}
+    >
+      {config.RESTAURANT.name}
+    </Menu.Item>
 
-          {/* 🔗 Links */}
-          <Menu.Menu className="nav-spreader">
-            <Menu.Item as={NavLink} to={config.ROUTES.HOME} end>
-              {t("navbar.home")}
-            </Menu.Item>
-            <Menu.Item as={NavLink} to={config.ROUTES.MENU_COMPONENT}>
-              {t("navbar.specialties")}
-            </Menu.Item>
-            <Menu.Item as={NavLink} to={config.ROUTES.PRODUCTS}>
-              {t("navbar.products")}
-            </Menu.Item>
-            <Menu.Item as={NavLink} to={config.ROUTES.CONTACT}>
-              {t("navbar.contact")}
-            </Menu.Item>
-            <Menu.Item as={NavLink} to={config.ROUTES.ABOUT}>
-              {t("navbar.about")}
-            </Menu.Item>
-          </Menu.Menu>
+    {/* 🔗 Links principales */}
+    <Menu.Menu className={`nav-spreader ${isMenuOpen ? "open" : ""}`}>
+      <Menu.Item as={NavLink} to={config.ROUTES.HOME} end onClick={() => setIsMenuOpen(false)}>
+        {t("navbar.home")}
+      </Menu.Item>
+      <Menu.Item as={NavLink} to={config.ROUTES.MENU_COMPONENT} onClick={() => setIsMenuOpen(false)}>
+        {t("navbar.specialties")}
+      </Menu.Item>
+      <Menu.Item as={NavLink} to={config.ROUTES.PRODUCTS} onClick={() => setIsMenuOpen(false)}>
+        {t("navbar.products")}
+      </Menu.Item>
+      <Menu.Item as={NavLink} to={config.ROUTES.CONTACT} onClick={() => setIsMenuOpen(false)}>
+        {t("navbar.contact")}
+      </Menu.Item>
+      <Menu.Item as={NavLink} to={config.ROUTES.ABOUT} onClick={() => setIsMenuOpen(false)}>
+        {t("navbar.about")}
+      </Menu.Item>
+    </Menu.Menu>
 
-          {/* 🌍 Selector de idioma (alineado a la derecha) */}
-         <Menu.Menu position="right" style={{ marginRight: "1em" }}>
-  <Dropdown
-    item
-    simple
-    floating
-    options={languageOptions}
-    value={i18n.language} // Muestra el idioma actual
-    onChange={(e, { value }) => changeLanguage(value)}
-    icon={null}
-    trigger={
-      <span style={{ color: "#fff", fontWeight: "bold" }}>
-        <Icon name="globe" style={{ marginRight: "5px" }} />
-        {t("navbar.language")} {/* Traducción dinámica */}
-      </span>
-    }
-  />
-</Menu.Menu>
-        </Container>
-      </Menu>
+    {/* 🌍 Selector de idioma */}
+    <Menu.Menu position="right" className="lang-menu">
+      <Dropdown
+        item
+        simple
+        floating
+        options={languageOptions}
+        value={i18n.language}
+        onChange={(e, { value }) => changeLanguage(value)}
+        icon={null}
+        trigger={
+          <span style={{ color: "#fff", fontWeight: "bold" }}>
+            <Icon name="globe" style={{ marginRight: "5px" }} />
+            {t("navbar.language")}
+          </span>
+        }
+      />
+    </Menu.Menu>
+
+    {/* 📱 Botón hamburguesa (visible solo en móvil) */}
+    <div className="hamburger-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+      <Icon name={isMenuOpen ? "close" : "bars"} size="large" color="orange" />
+    </div>
+  </Container>
+  </Menu>
 
       {/* 📄 Contenido */}
       <div className="main-content">
@@ -106,8 +112,8 @@ const App = () => {
           <Route path={config.ROUTES.CONTACT} element={<ContactoUbicacion />} />
           <Route path={config.ROUTES.MENU_COMPONENT} element={<MenuComponent />} />
           <Route path={config.ROUTES.ABOUT} element={<AboutUs />} />
-          <Route path="*" element={<NotFound />} />
           <Route path={config.ROUTES.RESERVATION} element={<ReservationForm />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
 
         <FloatingCart />
