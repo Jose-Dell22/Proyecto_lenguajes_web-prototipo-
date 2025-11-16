@@ -190,5 +190,11 @@
     "decrease": "Decrease quantity",
     "increase": "Increase quantity",
     "remove": "Remove product"
-  }
+  },
+  "notFound": {
+  "title": "Error 404",
+  "subtitle": "Oops, we burned the barbecue mate",
+  "back_button": "Go back home"
+}
+
 }

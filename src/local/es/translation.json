@@ -190,5 +190,10 @@
     "decrease": "Reducir cantidad",
     "increase": "Aumentar cantidad",
     "remove": "Eliminar producto"
-  }
+  },
+  "notFound": {
+  "title": "Error 404",
+  "subtitle": "Ostras, se nos quemó el asado tío",
+  "back_button": "Volver al inicio"
+}
 }

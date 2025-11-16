@@ -189,5 +189,11 @@
     "decrease": "减少数量",
     "increase": "增加数量",
     "remove": "删除商品"
-  }
+  },
+  "notFound": {
+  "title": "错误 404",
+  "subtitle": "哎呀，烧烤糊了，兄弟",
+  "back_button": "返回首页"
+}
+
 }
