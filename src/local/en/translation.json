@@ -63,7 +63,9 @@
     }
   },
   "products": {
-    "load_more": "Load More"
+    "load_more": "Load More",
+    "search_placeholder": "Search product..."
+
   },
   "contact": {
     "title": "Contact Us",

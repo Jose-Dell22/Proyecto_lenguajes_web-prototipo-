@@ -63,7 +63,8 @@
     }
   },
   "products": {
-    "load_more": "加载更多"
+    "load_more": "加载更多",
+    "search_placeholder": "搜索产品..."
   },
   "contact": {
     "title": "联系我们",

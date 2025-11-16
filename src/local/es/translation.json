@@ -63,7 +63,9 @@
     }
   },
   "products": {
-    "load_more": "Cargar más"
+    "load_more": "Cargar más",
+    "search_placeholder": "Buscar producto..."
+
   },
   "contact": {
     "title": "Contáctanos",

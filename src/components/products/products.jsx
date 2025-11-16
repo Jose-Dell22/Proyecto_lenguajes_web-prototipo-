@@ -16,10 +16,14 @@ import "./Products.css";
 
 const Products = () => {
   const { addToCart, config } = useApp();
+
   const [products, setProducts] = useState([]);
   const [visibleCount, setVisibleCount] = useState(config.APP.productsPerPage);
   const [addedMessage, setAddedMessage] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const [searchTerm, setSearchTerm] = useState("");
+
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -38,6 +42,13 @@ const Products = () => {
     fetchProducts();
   }, []);
 
+  // FILTRO DE BÚSQUEDA
+  const filteredProducts = products.filter((item) =>
+    item.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const visibleProducts = filteredProducts.slice(0, visibleCount);
+
   const handleAddToCart = (item) => {
     addToCart(item);
     setAddedMessage(item.title);
@@ -55,8 +66,6 @@ const Products = () => {
     );
   }
 
-  const visibleProducts = products.slice(0, visibleCount);
-
   return (
     <div
       className="products-container"
@@ -66,6 +75,7 @@ const Products = () => {
         paddingBottom: "0.5em",
       }}
     >
+      {/* OVERLAY OSCURO */}
       <div
         className="products-overlay"
         style={{
@@ -84,6 +94,7 @@ const Products = () => {
         className="products-content"
         style={{ position: "relative", zIndex: 1, paddingTop: "4em" }}
       >
+        {/* TÍTULO */}
         <Header
           as="h1"
           className="products-header"
@@ -106,6 +117,35 @@ const Products = () => {
           {config.RESTAURANT.name}
         </Header>
 
+        {/* INPUT DE BÚSQUEDA */}
+        <div style={{ marginTop: "1.5em", marginBottom: "2em" }}>
+          <input
+            type="text"
+            placeholder={
+              t("products.search_placeholder") || "Buscar producto..."
+            }
+            value={searchTerm}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+              setVisibleCount(config.APP.productsPerPage);
+            }}
+            style={{
+              width: "100%",
+              maxWidth: "420px",
+              padding: "0.8em 1.2em",
+              borderRadius: "12px",
+              border: "2px solid #ff7b00",
+              outline: "none",
+              fontSize: "1em",
+              fontWeight: "500",
+              background: "#fff",
+              color: "#333",
+              boxShadow: "0 3px 10px rgba(255,123,0,0.25)",
+            }}
+          />
+        </div>
+
+        {/* MENSAJE CUANDO SE AGREGA */}
         {addedMessage && (
           <Message positive style={{ marginTop: "1em" }}>
             <Icon name={ICONS.check} />
@@ -113,6 +153,7 @@ const Products = () => {
           </Message>
         )}
 
+        {/* LISTADO DE PRODUCTOS */}
         <Card.Group
           centered
           itemsPerRow={4}
@@ -224,7 +265,8 @@ const Products = () => {
           ))}
         </Card.Group>
 
-        {visibleCount < products.length && (
+        {/* BOTÓN CARGAR MÁS */}
+        {visibleCount < filteredProducts.length && (
           <div
             style={{
               position: "relative",
@@ -241,7 +283,9 @@ const Products = () => {
               icon
               labelPosition="right"
               onClick={() =>
-                setVisibleCount((prev) => prev + config.APP.productsPerPage)
+                setVisibleCount(
+                  (prev) => prev + config.APP.productsPerPage
+                )
               }
               className="products-load-more"
               style={{
