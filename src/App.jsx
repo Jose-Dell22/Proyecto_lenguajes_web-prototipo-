@@ -127,24 +127,7 @@ const App = () => {
             />
           </Menu.Menu>
 
-          {/* Selector de idioma visible solo en escritorio */}
-          <Menu.Menu position="right" className="lang-menu desktop-only">
-            <Dropdown
-              item
-              simple
-              floating
-              options={languageOptions}
-              value={i18n.language}
-              onChange={(e, { value }) => changeLanguage(value)}
-              icon={null}
-              trigger={
-                <span style={{ color: "#fff", fontWeight: "bold" }}>
-                  <Icon name="globe" style={{ marginRight: "5px" }} />
-                  {t("navbar.language")}
-                </span>
-              }
-            />
-          </Menu.Menu>
+      
 
           {/* Botón hamburguesa (solo móvil) */}
           <div className="hamburger-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
