@@ -14,7 +14,7 @@ import {
 import HeroSection from "../common/HeroSection";
 import { useApp } from "../../context/AppContext";
 import { APP_CONFIG } from "../../config/constants";
-import { useTranslation } from "react-i18next"; // 🌍 Soporte de idiomas
+import { useTranslation } from "react-i18next"; //  Soporte de idiomas
 
 const heroImages = [
   "https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=2000&q=80",
@@ -25,7 +25,7 @@ const heroImages = [
 const Home = () => {
   const navigate = useNavigate();
   const { config, addToCart } = useApp();
-  const [featuredProducts, setFeaturedProducts, currentImage, setCurrentImage] = useState([]);
+  const [featuredProducts, setFeaturedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const { t } = useTranslation();
 
