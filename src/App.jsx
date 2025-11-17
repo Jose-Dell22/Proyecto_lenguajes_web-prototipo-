@@ -36,7 +36,7 @@ const App = () => {
 
   // Opciones del selector de idioma
   const languageOptions = [
-    { key: "es", value: "es", flag: "es", text: "Español" },
+    { key: "es", value: "es", flag: "co", text: "Español" },
     { key: "en", value: "en", flag: "us", text: "English" },
     { key: "zh", value: "zh", flag: "cn", text: "中文" }
   ];
