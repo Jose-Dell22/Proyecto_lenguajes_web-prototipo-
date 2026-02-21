@@ -55,6 +55,7 @@ export const APP_CONFIG = {
     ABOUT: '/about',
     MENU_COMPONENT: '/MenuComponent',
     RESERVATION: "/reservar",
+    ADMIN: "/admin",
   },
 };
 

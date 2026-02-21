@@ -32,6 +32,7 @@ export default function ContactoUbicacion() {
     decreaseQuantity,
     increaseQuantity,
     clearCart,
+    addSuggestion,
   } = useApp()
 
   const { values, errors, isSubmitting, handleChange, handleSubmit, reset } = useForm()
@@ -40,6 +41,11 @@ export default function ContactoUbicacion() {
   const onSubmit = async () => {
     try {
       await new Promise((r) => setTimeout(r, 700))
+      addSuggestion({
+        nombre: values.nombre,
+        email: values.email,
+        mensaje: values.mensaje,
+      });
       updateContactForm({
         successMessage: t('contact.success'),
         data: { nombre: '', email: '', mensaje: '' },

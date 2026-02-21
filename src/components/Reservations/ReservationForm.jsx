@@ -5,6 +5,7 @@ import {
 } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useApp } from "../../context/AppContext";
 
 const CUT_KEYS = ["picanha", "asado", "entrania", "churrasco"];
 const DONENESS_KEYS = ["blue", "rare", "medium", "threeQuarters", "well"];
@@ -31,6 +32,7 @@ export default function ReservationForm() {
   // 👇 Igual que About.jsx: namespace por defecto "translation"
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { addReservation } = useApp();
   const [values, setValues] = useState(INITIAL);
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
   const [errorMsg, setErrorMsg] = useState("");
@@ -87,6 +89,7 @@ export default function ReservationForm() {
 
     try {
       await new Promise(r => setTimeout(r, 1100)); // simular envío
+      addReservation(values);
       setStatus("success");
     } catch (_e) {
       setErrorMsg(t("reservation.errors.submitFailed"));

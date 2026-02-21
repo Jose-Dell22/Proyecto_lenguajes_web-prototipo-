@@ -11,6 +11,7 @@ import MenuComponent from "./components/MenuComponent/menuComponent";
 import FloatingCart from "./components/common/FloatingCart";
 import Footer from "./components/common/Footer";
 import ReservationForm from "./components/Reservations/ReservationForm";
+import AdminDashboard from "./components/Admin/AdminDashboard";
 
 import { useApp } from "./context/AppContext";
 import { MESSAGES } from "./config/constants";
@@ -127,6 +128,18 @@ const App = () => {
             />
           </Menu.Menu>
 
+          {/* Icono de administrador a la derecha */}
+          <Menu.Menu position="right">
+            <Menu.Item
+              as={NavLink}
+              to={config.ROUTES.ADMIN}
+              onClick={() => setIsMenuOpen(false)}
+              title="Panel de Administrador"
+            >
+              <Icon name="user" size="large" color="orange" />
+            </Menu.Item>
+          </Menu.Menu>
+
       
 
           {/* Botón hamburguesa (solo móvil) */}
@@ -148,6 +161,7 @@ const App = () => {
           <Route path={config.ROUTES.MENU_COMPONENT} element={<MenuComponent />} />
           <Route path={config.ROUTES.ABOUT} element={<AboutUs />} />
           <Route path={config.ROUTES.RESERVATION} element={<ReservationForm />} />
+          <Route path={config.ROUTES.ADMIN} element={<AdminDashboard />} />
 
           {/* Página 404 */}
           <Route path="*" element={<NotFound />} />

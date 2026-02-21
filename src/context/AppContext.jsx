@@ -25,11 +25,39 @@ export const AppProvider = ({ children }) => {
     isSubmitting: false,
     successMessage: '',
   });
+  const [suggestions, setSuggestions] = useState([]);
+  const [reservations, setReservations] = useState([]);
+  const [adminUser, setAdminUser] = useState(null);
 
   // Efectos
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), APP_CONFIG.APP.loadingTime);
     return () => clearTimeout(timer);
+  }, []);
+
+  // Cargar admin del localStorage al iniciar
+  useEffect(() => {
+    const savedAdmin = localStorage.getItem('adminUser');
+    if (savedAdmin) {
+      try {
+        setAdminUser(JSON.parse(savedAdmin));
+      } catch (error) {
+        console.error('Error al cargar admin del localStorage:', error);
+      }
+    } else {
+      // Si no hay admin guardado, crear uno por defecto (simulado)
+      const defaultAdmin = {
+        id: 1,
+        nombre: 'Administrador',
+        apellido: 'Principal',
+        email: 'admin@carnesalbarril.com',
+        telefono: '+57 318 123 4567',
+        rol: 'Administrador',
+        fechaIngreso: new Date().toISOString(),
+      };
+      setAdminUser(defaultAdmin);
+      localStorage.setItem('adminUser', JSON.stringify(defaultAdmin));
+    }
   }, []);
 
   // Funciones globales
@@ -126,6 +154,79 @@ export const AppProvider = ({ children }) => {
     }
   };
 
+  // Funciones para sugerencias
+  const addSuggestion = (suggestion) => {
+    const newSuggestion = {
+      id: Date.now(),
+      ...suggestion,
+      fecha: new Date().toISOString(),
+    };
+    setSuggestions(prev => [newSuggestion, ...prev]);
+  };
+
+  const deleteSuggestion = (id) => {
+    setSuggestions(prev => prev.filter(s => s.id !== id));
+  };
+
+  // Funciones para reservas
+  const addReservation = (reservation) => {
+    const newReservation = {
+      id: Date.now(),
+      ...reservation,
+      fechaCreacion: new Date().toISOString(),
+    };
+    setReservations(prev => [newReservation, ...prev]);
+  };
+
+  const updateReservation = (id, updatedReservation) => {
+    setReservations(prev =>
+      prev.map(r => r.id === id ? { ...r, ...updatedReservation } : r)
+    );
+  };
+
+  const deleteReservation = (id) => {
+    setReservations(prev => prev.filter(r => r.id !== id));
+  };
+
+  // Funciones CRUD para productos
+  const addProduct = (product) => {
+    const newProduct = {
+      id: Date.now(),
+      ...product,
+    };
+    setProducts(prev => [newProduct, ...prev]);
+  };
+
+  const updateProduct = (id, updatedProduct) => {
+    setProducts(prev =>
+      prev.map(p => p.id === id ? { ...p, ...updatedProduct } : p)
+    );
+  };
+
+  const deleteProduct = (id) => {
+    setProducts(prev => prev.filter(p => p.id !== id));
+  };
+
+  // Funciones de autenticación
+  const loginAdmin = (adminData) => {
+    const admin = {
+      id: adminData.id || Date.now(),
+      nombre: adminData.nombre,
+      apellido: adminData.apellido,
+      email: adminData.email,
+      telefono: adminData.telefono || '',
+      rol: adminData.rol || 'Administrador',
+      fechaIngreso: adminData.fechaIngreso || new Date().toISOString(),
+    };
+    setAdminUser(admin);
+    localStorage.setItem('adminUser', JSON.stringify(admin));
+  };
+
+  const logoutAdmin = () => {
+    setAdminUser(null);
+    localStorage.removeItem('adminUser');
+  };
+
   // Valor del contexto
   const value = {
     // Estados
@@ -133,6 +234,9 @@ export const AppProvider = ({ children }) => {
     products,
     cart,
     contactForm,
+    suggestions,
+    reservations,
+    adminUser,
     
     // Configuración
     config: APP_CONFIG,
@@ -152,6 +256,22 @@ export const AppProvider = ({ children }) => {
     
     // Funciones de productos
     loadProducts,
+    addProduct,
+    updateProduct,
+    deleteProduct,
+    
+    // Funciones de sugerencias
+    addSuggestion,
+    deleteSuggestion,
+    
+    // Funciones de reservas
+    addReservation,
+    updateReservation,
+    deleteReservation,
+    
+    // Funciones de autenticación
+    loginAdmin,
+    logoutAdmin,
   };
 
   return (
