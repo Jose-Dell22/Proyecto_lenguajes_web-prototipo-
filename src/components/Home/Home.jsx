@@ -15,6 +15,7 @@ import HeroSection from "../common/HeroSection";
 import { useApp } from "../../context/AppContext";
 import { APP_CONFIG } from "../../config/constants";
 import { useTranslation } from "react-i18next"; //  Soporte de idiomas
+import "./Home.css";
 
 const heroImages = [
   "https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=2000&q=80",
@@ -79,6 +80,7 @@ const Home = () => {
       {/* Sección de navegación llamativa */}
       <Segment
         vertical
+        className="home-navigation-section"
         style={{
           background: "linear-gradient(135deg, #ff7b00 0%, #ff4500 50%, #d35400 100%)",
           padding: "4em 0",
